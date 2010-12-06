@@ -1,12 +1,14 @@
 package ch.eiafr.mafiaspace;
 
-public class ConsoleUI extends WorldObserver {
+public class ConsoleUI implements WorldObserver {
 
-	public void worldChanged() {
+	@Override
+    public void worldChanged() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void worldEnded() {
+	@Override
+    public void worldEnded() {
 		throw new UnsupportedOperationException();
 	}
 }

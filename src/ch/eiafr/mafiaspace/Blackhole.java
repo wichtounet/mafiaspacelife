@@ -1,24 +1,31 @@
 package ch.eiafr.mafiaspace;
 
-public class Blackhole extends Element {
+import java.util.List;
 
-	public void getName() {
+public class Blackhole implements Element {
+
+	@Override
+    public void getName() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void getIcon() {
+	@Override
+    public void getIcon() {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean isAbleToMove() {
+	@Override
+    public boolean isAbleToMove() {
 		throw new UnsupportedOperationException();
 	}
 
-	public int getPriority() {
+	@Override
+    public int getPriority() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Command getCommand(List<Person> aNeighbors) {
+	@Override
+    public Command getCommand(List<Element> aNeighbors) {
 		throw new UnsupportedOperationException();
 	}
 }

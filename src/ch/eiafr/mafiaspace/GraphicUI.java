@@ -1,12 +1,14 @@
 package ch.eiafr.mafiaspace;
 
-public class GraphicUI extends WorldObserver {
+public class GraphicUI implements WorldObserver {
 
-	public void worldChanged() {
+	@Override
+    public void worldChanged() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void worldEnded() {
+	@Override
+    public void worldEnded() {
 		throw new UnsupportedOperationException();
 	}
 }

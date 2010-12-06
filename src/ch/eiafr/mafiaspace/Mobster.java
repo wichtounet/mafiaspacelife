@@ -1,28 +1,35 @@
 package ch.eiafr.mafiaspace;
 
-public class Mobster extends Element {
+import java.util.List;
+
+public class Mobster implements Element {
 
 	public boolean isTraitor() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void getName() {
+	@Override
+    public void getName() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void getIcon() {
+	@Override
+    public void getIcon() {
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean isAbleToMove() {
+	@Override
+    public boolean isAbleToMove() {
 		throw new UnsupportedOperationException();
 	}
 
-	public int getPriority() {
+	@Override
+    public int getPriority() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Command getCommand(List<Person> aNeighbors) {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public Command getCommand(List<Element> aNeighbors) {
+        throw new UnsupportedOperationException();
+    }
 }

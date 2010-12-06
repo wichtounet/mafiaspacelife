@@ -1,14 +1,11 @@
 package ch.eiafr.mafiaspace;
 
+import java.util.List;
+
 public interface Element {
-
-	public void getName();
-
-	public void getIcon();
-
-	public boolean isAbleToMove();
-
-	public int getPriority();
-
-	public Command getCommand(List<Person> aNeighbors);
+	void getName();
+	void getIcon();
+	boolean isAbleToMove();
+	int getPriority();
+	Command getCommand(List<Element> aNeighbors);
 }

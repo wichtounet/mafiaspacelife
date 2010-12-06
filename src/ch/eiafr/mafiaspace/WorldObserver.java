@@ -2,7 +2,7 @@ package ch.eiafr.mafiaspace;
 
 public interface WorldObserver {
 
-	public void worldChanged();
+	void worldChanged();
 
-	public void worldEnded();
+	void worldEnded();
 }
