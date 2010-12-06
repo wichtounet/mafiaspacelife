@@ -9,7 +9,9 @@ public class MafiaCaseFactory extends CaseFactory {
             case 1:
                 return new Case(new Godfather());
             case 2:
-                return 
+                return new Case(new Cop());
+            case 3:
+                return new Case(new Cop());
         }
 
         return c;
