@@ -3,9 +3,9 @@ package ch.eiafr.mafiaspace;
 public class MafiaCaseFactory extends CaseFactory {
     @Override
     public Case createElement(int type) {
-        Case c = null;
-
         switch(type){
+            case 0:
+                return new MafiaCase(null, false);
             case 1:
                 return new MafiaCase(new Godfather(), false);
             case 2:
@@ -16,6 +16,6 @@ public class MafiaCaseFactory extends CaseFactory {
                 return new MafiaCase(null, true);
         }
 
-        return c;
+        return null;
     }
 }
