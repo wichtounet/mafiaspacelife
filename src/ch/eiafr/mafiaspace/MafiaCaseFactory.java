@@ -7,13 +7,13 @@ public class MafiaCaseFactory extends CaseFactory {
 
         switch(type){
             case 1:
-                return new Case(new Godfather());
+                return new MafiaCase(new Godfather(), false);
             case 2:
-                return new Case(new Cop());
+                return new MafiaCase(new Cop(), false);
             case 3:
-                return new Case(new Mobster());
+                return new MafiaCase(new Mobster(), false);
             case 4:
-                return new Case(new Mobster());
+                return new MafiaCase(null, true);
         }
 
         return c;
