@@ -31,7 +31,7 @@ public class Game {
         
         worldManager.setWorld(worldReader.readWorld("mafiaworld.txt"));
         
-        GraphicUI ui = new GraphicUI();
+        new GraphicUI(worldManager);
     }
     
     public static void main(String[] args) {
