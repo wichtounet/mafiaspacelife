@@ -4,11 +4,11 @@ public class ConsoleUI implements WorldObserver {
 
     @Override
     public void worldChanged() {
-        throw new UnsupportedOperationException();
+        //Update view
     }
 
     @Override
     public void worldEnded() {
-        throw new UnsupportedOperationException();
+        //Display
     }
 }

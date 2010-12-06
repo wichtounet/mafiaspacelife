@@ -1,11 +1,13 @@
 package ch.eiafr.mafiaspace;
 
+import javax.swing.Icon;
+
 import java.util.List;
 
 public interface Element {
-    void getName();
+    String getName();
 
-    void getIcon();
+    Icon getIcon();
 
     boolean isAbleToMove();
 

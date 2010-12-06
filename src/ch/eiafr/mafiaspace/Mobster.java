@@ -1,26 +1,29 @@
 package ch.eiafr.mafiaspace;
 
+import javax.swing.Icon;
+
 import java.util.List;
 
 public class Mobster implements Element {
+    private boolean traitor;
 
     public boolean isTraitor() {
-        throw new UnsupportedOperationException();
+        return traitor;
     }
 
     @Override
-    public void getName() {
-        throw new UnsupportedOperationException();
+    public String getName() {
+        return "Mobster";
     }
 
     @Override
-    public void getIcon() {
+    public Icon getIcon() {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean isAbleToMove() {
-        throw new UnsupportedOperationException();
+        return true;
     }
 
     @Override

@@ -1,8 +1,5 @@
 package ch.eiafr.mafiaspace;
 
-public class Reader {
-
-    public void readWorld(String aFile) {
-        throw new UnsupportedOperationException();
-    }
+public interface Reader {
+    public World readWorld(String filename);
 }
