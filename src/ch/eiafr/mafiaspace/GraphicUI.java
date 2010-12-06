@@ -6,9 +6,9 @@ import javax.swing.JFrame;
 
 public class GraphicUI extends JFrame implements WorldObserver{
 
-    private World worldManager;
+    private WorldManager worldManager;
     
-    public GraphicUI(World worldManager)
+    public GraphicUI(WorldManager worldManager)
     {
         super("Mafia - Spacelife");
         this.worldManager = worldManager;
