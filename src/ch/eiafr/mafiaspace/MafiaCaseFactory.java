@@ -11,7 +11,9 @@ public class MafiaCaseFactory extends CaseFactory {
             case 2:
                 return new Case(new Cop());
             case 3:
-                return new Case(new Cop());
+                return new Case(new Mobster());
+            case 4:
+                return new Case(new Mobster());
         }
 
         return c;

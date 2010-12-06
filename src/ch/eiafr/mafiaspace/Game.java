@@ -1,4 +1,7 @@
 package ch.eiafr.mafiaspace;
 
-public interface Game {
+public class Game {
+    public static void main(String[] args) {
+        
+    }
 }
