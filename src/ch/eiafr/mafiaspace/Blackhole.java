@@ -1,22 +1,24 @@
 package ch.eiafr.mafiaspace;
 
+import javax.swing.Icon;
+
 import java.util.List;
 
 public class Blackhole implements Element {
 
     @Override
-    public void getName() {
-        throw new UnsupportedOperationException();
+    public String getName() {
+        return "Blackhole";
     }
 
     @Override
-    public void getIcon() {
+    public Icon getIcon() {
         throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean isAbleToMove() {
-        throw new UnsupportedOperationException();
+        return false;
     }
 
     @Override
@@ -26,6 +28,6 @@ public class Blackhole implements Element {
 
     @Override
     public Command getCommand(List<Element> aNeighbors) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 }
