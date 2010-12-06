@@ -1,5 +1,5 @@
 package ch.eiafr.mafiaspace;
 
 public abstract class CaseFactory {
-	public abstract Case createElement(int type) ;
+    public abstract Case createElement(int type);
 }

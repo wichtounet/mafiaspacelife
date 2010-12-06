@@ -3,10 +3,23 @@ package ch.eiafr.mafiaspace;
 import javax.swing.Icon;
 
 public class Case {
-	public World _unnamed_World_;
-	public Element _element;
+    private Element element;
 
-	public Icon getIcon(){
+    public Case(Element element) {
+        super();
+
+        this.setElement(element);
+    }
+
+    public Icon getIcon() {
         return null;
+    }
+
+    public Element getElement() {
+        return element;
+    }
+
+    public void setElement(Element element) {
+        this.element = element;
     }
 }

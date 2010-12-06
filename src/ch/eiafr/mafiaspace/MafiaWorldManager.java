@@ -2,8 +2,8 @@ package ch.eiafr.mafiaspace;
 
 public class MafiaWorldManager extends WorldManager {
 
-	@Override
+    @Override
     protected boolean isWorldEnded() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 }

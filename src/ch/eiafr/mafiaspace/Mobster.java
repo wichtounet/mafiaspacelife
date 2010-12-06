@@ -4,29 +4,29 @@ import java.util.List;
 
 public class Mobster implements Element {
 
-	public boolean isTraitor() {
-		throw new UnsupportedOperationException();
-	}
+    public boolean isTraitor() {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
+    @Override
     public void getName() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
+    @Override
     public void getIcon() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
+    @Override
     public boolean isAbleToMove() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
+    @Override
     public int getPriority() {
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
 
     @Override
     public Command getCommand(List<Element> aNeighbors) {
