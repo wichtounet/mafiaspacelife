@@ -12,7 +12,7 @@ public class Case {
     }
 
     public Icon getIcon() {
-        return null;
+        return element.getIcon();
     }
 
     public Element getElement() {
