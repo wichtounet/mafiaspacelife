@@ -11,10 +11,12 @@ public class Game {
     /** Unique instance */
     private static Game instance;
     
+    /** Cannot be used externally */
     private Game() {
         super();
     }
     
+    /** Get the unique instance of the class */
     public static Game getInstance() {
         if(instance == null)
             instance = new Game();
