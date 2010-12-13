@@ -28,10 +28,10 @@ public class Game {
         WorldManagerFactory managerFactory = new WorldManagerFactory();
         ReaderFactory readerFactory = new ReaderFactory();
         
-        Reader worldReader = readerFactory.createReader("mafiaworld.txt");
+        Reader worldReader = readerFactory.createReader("levels/mafiaworld.txt");
         WorldManager worldManager = managerFactory.createWorldManager(WorldManagerFactory.MAFIA_WORLD_NAME);
         
-        worldManager.setWorld(worldReader.readWorld("mafiaworld.txt"));
+        worldManager.setWorld(worldReader.readWorld("levels/mafiaworld.txt"));
         
         new GraphicUI(worldManager);
     }
