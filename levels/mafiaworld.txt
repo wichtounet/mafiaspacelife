@@ -1,4 +1,4 @@
-# defines a world for Mafia Lifes
+# defines a world for Mafia Life
 
 # type of file (mafialife | spacelife)
 type = mafialife
