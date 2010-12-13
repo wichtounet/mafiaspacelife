@@ -2,6 +2,7 @@ package ch.eiafr.mafiaspace;
 
 import javax.swing.Icon;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface Element {
@@ -11,5 +12,5 @@ public interface Element {
 
     boolean isAbleToMove(Case c);
 
-    Command getCommand(List<Element> aNeighbors);
+    Command getCommand(Collection<Case> aNeighbors);
 }

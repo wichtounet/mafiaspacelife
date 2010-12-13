@@ -6,9 +6,23 @@ public abstract class WorldManager {
     private World world;
     
     public void nextTurn(){
-        Case nextElement = world.getNextElement();
+        Case nextCase = world.getNextElement();
 
-        Collection<Case> neighbours = world.getPossibleMoves(nextElement);
+        Collection<Case> neighbours = world.getPossibleMoves(nextCase);
+
+        for(Case c : neighbours){
+            if(nextCase.getElement().isAbleToMove(c)){
+                world.moveElement(nextCase, c);
+
+                break;
+            }
+        }
+
+        Command command = nextCase.getElement().getCommand(world.getNeighbours(nextCase));
+
+        //Execute command
+
+        world.endTurn();
     }
 
     public void setWorld(World aWorld) {
