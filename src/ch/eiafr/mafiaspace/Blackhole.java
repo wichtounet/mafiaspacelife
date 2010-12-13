@@ -1,10 +1,12 @@
 package ch.eiafr.mafiaspace;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import java.util.List;
 
 public class Blackhole implements Element {
+    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/blackhole.png");
 
     @Override
     public String getName() {
@@ -13,7 +15,7 @@ public class Blackhole implements Element {
 
     @Override
     public Icon getIcon() {
-        throw new UnsupportedOperationException();
+        return ICON;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class Blackhole implements Element {
 
     @Override
     public int getPriority() {
-        throw new UnsupportedOperationException();
+        return 1;
     }
 
     @Override

@@ -7,7 +7,7 @@ public class SpaceCaseFactory extends CaseFactory {
             case 0:
                 return new Case(null);
             case 1:
-                return new Case(new Asteroide());
+                return new Case(new Asteroid());
             case 2:
                 return new Case(new Planet());
             case 3:

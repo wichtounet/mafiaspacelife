@@ -1,19 +1,21 @@
 package ch.eiafr.mafiaspace;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import java.util.List;
 
-public class Asteroide implements Element {
+public class Asteroid implements Element {
+    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/asteroide.png");
 
     @Override
     public String getName() {
-        return "Asteroide";
+        return "Asteroid";
     }
 
     @Override
     public Icon getIcon() {
-        throw new UnsupportedOperationException();
+        return ICON;
     }
 
     @Override
@@ -23,7 +25,7 @@ public class Asteroide implements Element {
 
     @Override
     public int getPriority() {
-        throw new UnsupportedOperationException();
+        return 1;
     }
 
     @Override
