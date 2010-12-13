@@ -1,13 +1,13 @@
 package ch.eiafr.mafiaspace;
 
 public class Pact extends Command {
-    @Override
+    
+	public Pact(Element element, World world) {
+		super(element, world);
+	}
+	
+	@Override
     public void make() {
-        //TODO Implement that !
-    }
-
-    @Override
-    public void undo() {
         //TODO Implement that !
     }
 }

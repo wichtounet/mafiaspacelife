@@ -1,9 +1,12 @@
 package ch.eiafr.mafiaspace;
 
 public abstract class Command {
-    public Element _unnamed_Element_;
-    public World _unnamed_World_;
-
+    private Element element;
+    private World world;
+    
+    public Command(Element element, World world) {
+    	this.element = element;
+    	this.world = world;
+    }
     public abstract void make();
-    public abstract void undo();
 }

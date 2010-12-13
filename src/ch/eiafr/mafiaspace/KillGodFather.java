@@ -1,13 +1,13 @@
 package ch.eiafr.mafiaspace;
 
 public class KillGodFather extends Command {
-    @Override
+    
+	public KillGodFather(Element element, World world) {
+		super(element, world);
+	}
+	
+	@Override
     public void make() {
-        //TODO Implement that !
-    }
-
-    @Override
-    public void undo() {
         //TODO Implement that !
     }
 }
