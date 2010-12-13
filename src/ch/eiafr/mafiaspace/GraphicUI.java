@@ -2,6 +2,10 @@ package ch.eiafr.mafiaspace;
 
 
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class GraphicUI extends JFrame implements WorldObserver {
@@ -13,7 +17,26 @@ public class GraphicUI extends JFrame implements WorldObserver {
         super("Mafia - Spacelife");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.worldManager = worldManager;
+        
         this.setSize(new Dimension(800,600));
+        
+        GridBagConstraints gdc = GridBagHelper.createGDC();
+        setLayout(new GridBagLayout());
+        
+        JButton playB   = new JButton(">");
+        JButton pauseB  = new JButton("||");
+        JButton stopB   = new JButton("[]");
+        JButton nStepB  = new JButton("|>");
+        
+        
+        add(new ViewPanel(worldManager.world),GridBagHelper.modifyGDC(gdc,1,4,10,10,0,0));
+        add(playB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,0));
+        add(pauseB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,1));
+        add(stopB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,2));
+        add(nStepB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,3));
+        
+        
+
         this.setVisible(true);
         setLocationRelativeTo(null);
     }
@@ -33,7 +56,5 @@ public class GraphicUI extends JFrame implements WorldObserver {
         throw new UnsupportedOperationException();
     }
     
-    public static void main(String[] arg){
-        new GraphicUI(null);
-    }
+    
 }

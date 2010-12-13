@@ -19,13 +19,8 @@ public class Cop implements Element {
     }
 
     @Override
-    public boolean isAbleToMove() {
-        return true;
-    }
-
-    @Override
-    public int getPriority() {
-        return 1;
+    public boolean isAbleToMove(Case c) {
+        return false;  //TODO Implement that !
     }
 
     @Override

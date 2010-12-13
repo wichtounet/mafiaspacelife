@@ -8,5 +8,6 @@ public abstract class Command {
     	this.element = element;
     	this.world = world;
     }
+    
     public abstract void make();
 }

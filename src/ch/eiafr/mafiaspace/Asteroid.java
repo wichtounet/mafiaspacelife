@@ -19,13 +19,8 @@ public class Asteroid implements Element {
     }
 
     @Override
-    public boolean isAbleToMove() {
-        return false;
-    }
-
-    @Override
-    public int getPriority() {
-        return 1;
+    public boolean isAbleToMove(Case c) {
+        return false;  //TODO Implement that !
     }
 
     @Override
