@@ -2,6 +2,7 @@ package ch.eiafr.mafiaspace;
 
 import javax.swing.Icon;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface Element {
@@ -9,9 +10,7 @@ public interface Element {
 
     Icon getIcon();
 
-    boolean isAbleToMove();
+    boolean isAbleToMove(Case c);
 
-    int getPriority();
-
-    Command getCommand(List<Element> aNeighbors);
+    Command getCommand(Collection<Case> aNeighbors);
 }

@@ -1,13 +1,13 @@
 package ch.eiafr.mafiaspace;
 
 public class Colonise extends Command {
-    @Override
+    
+	public Colonise(Element element, World world) {
+		super(element, world);
+	}
+	
+	@Override
     public void make() {
-        //TODO Implement that !
-    }
-
-    @Override
-    public void undo() {
         //TODO Implement that !
     }
 }

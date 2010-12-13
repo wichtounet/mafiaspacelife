@@ -30,13 +30,14 @@ public class Game {
         WorldManagerFactory managerFactory = new WorldManagerFactory();
         ReaderFactory readerFactory = new ReaderFactory();
         
-        Reader worldReader = readerFactory.createReader(/*"levels/mafiaworld.txt"*/"levels/spaceworld.txt");
+        Reader worldReader = readerFactory.createReader("levels/mafiaworld.txt"/*"levels/spaceworld.txt"*/);
         WorldManager worldManager = managerFactory.createWorldManager(WorldManagerFactory.MAFIA_WORLD_NAME);
         
-        worldManager.setWorld(worldReader.readWorld(/*"levels/mafiaworld.txt"*/"levels/spaceworld.txt"));
+        worldManager.setWorld(worldReader.readWorld("levels/mafiaworld.txt"/*"levels/spaceworld.txt"*/));
         
         //new GraphicUI(worldManager);
-        new StartFrame();
+        //new StartFrame();
+        new ConsoleUI(worldManager);
     }
     
     public static void main(String[] args) {
