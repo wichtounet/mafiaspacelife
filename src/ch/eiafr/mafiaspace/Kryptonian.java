@@ -3,7 +3,7 @@ package ch.eiafr.mafiaspace;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import java.util.List;
+import java.util.Collection;
 
 public class Kryptonian implements Element {
     private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/kryptonian.png");
@@ -24,7 +24,7 @@ public class Kryptonian implements Element {
     }
 
     @Override
-    public Command getCommand(List<Element> aNeighbors) {
+    public Command getCommand(Collection<Case> aNeighbors) {
         return null;
     }
 }
