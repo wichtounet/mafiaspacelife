@@ -9,9 +9,7 @@ public interface Element {
 
     Icon getIcon();
 
-    boolean isAbleToMove();
-
-    int getPriority();
+    boolean isAbleToMove(Case c);
 
     Command getCommand(List<Element> aNeighbors);
 }

@@ -33,7 +33,7 @@ public class Game {
         
         worldManager.setWorld(worldReader.readWorld("levels/mafiaworld.txt"));
         
-        new GraphicUI(worldManager);
+        new ConsoleUI(worldManager);
     }
     
     public static void main(String[] args) {
