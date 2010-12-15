@@ -25,19 +25,7 @@ public class Game {
     }
     
     public void start() {
-        
-        
-        WorldManagerFactory managerFactory = new WorldManagerFactory();
-        ReaderFactory readerFactory = new ReaderFactory();
-        
-        Reader worldReader = readerFactory.createReader("levels/mafiaworld.txt"/*"levels/spaceworld.txt"*/);
-        WorldManager worldManager = managerFactory.createWorldManager(WorldManagerFactory.MAFIA_WORLD_NAME);
-        
-        worldManager.setWorld(worldReader.readWorld("levels/mafiaworld.txt"/*"levels/spaceworld.txt"*/));
-        
-        //new GraphicUI(worldManager);
-        //new StartFrame();
-        new ConsoleUI(worldManager);
+        new StartFrame();
     }
     
     public static void main(String[] args) {

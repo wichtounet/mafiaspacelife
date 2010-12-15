@@ -5,18 +5,20 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public class World {
+    
     private final Case[][] cases;
+    private final String type;
     private final Collection<WorldObserver> worldObservers = new ArrayList<WorldObserver>(5);
 
     private final LinkedList<Case> elementQueue = new LinkedList<Case>();
 
-    public World(Case[][] cases) {
+    public World(Case[][] cases, String type) {
         super();
 
         this.cases = cases; //TODO COPY
+        this.type = type;
 
         for(Case[] column : cases){
             for(Case row : column){
@@ -29,6 +31,10 @@ public class World {
 
     public Case[][] getCases() {
         return cases;
+    }
+    
+    public String getType() {
+        return type;
     }
 
     public void addObserver(WorldObserver observer) {

@@ -19,7 +19,6 @@ public class TextReader implements Reader {
     
     private Map<String, String> properties;
     private BufferedReader reader;
-    //private CaseFactory caseFactory;
 
     @Override
     public World readWorld(String filename) {
@@ -40,7 +39,8 @@ public class TextReader implements Reader {
             // Parse the file to create the matrix of cases 
             parseMatrix(cases);
             
-            world = new World(cases);
+            // Create the world with his cases and his type
+            world = new World(cases, properties.get(KEY_TYPE));
             
             reader.close();
         }
