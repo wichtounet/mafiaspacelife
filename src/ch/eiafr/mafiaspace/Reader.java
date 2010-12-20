@@ -1,5 +1,5 @@
 package ch.eiafr.mafiaspace;
 
 public interface Reader {
-    public World readWorld(String filename);
+    public World readWorld(String filename) throws Exception;
 }

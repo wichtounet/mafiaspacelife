@@ -83,29 +83,41 @@ public class StartFrame extends JFrame implements ActionListener {
         Object[] values = listWorlds.getSelectedValues();
         
         if(values.length == 0) {
-            JOptionPane.showMessageDialog(this, "Please select an available world", "No world selected", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select an available world",
+                                          "No world selected", 
+                                          JOptionPane.WARNING_MESSAGE);
             return;
         }
         
+        String worldName = (String)values[0];
+        
         // Create the world and the world manager from the world file
-        final Reader       worldReader  = readerFactory.createReader(WORLDS_DIRECTORY + "/" + values[0]);
-        final World        world        = worldReader.readWorld(WORLDS_DIRECTORY + "/" + values[0]);
-        final WorldManager worldManager = managerFactory.createWorldManager(world.getType());
-        
-        worldManager.setWorld(world);
-        
-        // Launch the user interface
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                if(btConsole.isSelected())
-                    new ConsoleUI(worldManager);
-                else if(btGraphical.isSelected())
-                    new GraphicUI(worldManager);
-            }
-        });
-        
-        dispose();
+        try {
+            final Reader       worldReader  = readerFactory.createReader(WORLDS_DIRECTORY + "/" + worldName);
+            final World        world        = worldReader.readWorld(WORLDS_DIRECTORY + "/" + worldName);
+            final WorldManager worldManager = managerFactory.createWorldManager(world.getType());
+            
+            worldManager.setWorld(world);
+            
+            // Launch the user interface
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    if(btConsole.isSelected())
+                        new ConsoleUI(worldManager);
+                    else if(btGraphical.isSelected())
+                        new GraphicUI(worldManager);
+                }
+            });
+            
+            dispose();
+        }
+        catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Unable to load the file '" + worldName +
+                                          "'. Please check the consistency of the file",
+                                          "Error in world file",
+                                          JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private String[] getWorldFiles() {
