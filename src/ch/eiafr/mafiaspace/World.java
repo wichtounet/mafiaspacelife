@@ -117,7 +117,7 @@ public class World {
         Iterator<Case> iterator = cases.iterator();
 
         while (iterator.hasNext()) {
-            if(iterator.next().getElement() == null){
+            if(iterator.next().getElement() != null){
                 iterator.remove();
             }
         }
@@ -127,7 +127,7 @@ public class World {
         Iterator<Case> iterator = cases.iterator();
 
         while (iterator.hasNext()) {
-            if (iterator.next().getElement() != null) {
+            if (iterator.next().getElement() == null) {
                 iterator.remove();
             }
         }
@@ -146,12 +146,52 @@ public class World {
     }
 
     public void moveElement(Case start, Case end) {
-        //TODO Move element from start to end
+        System.out.printf("Move %s to %s\n", getPosition(start), getPosition(end));
+
+        swap(getPosition(start), getPosition(end));
+    }
+
+    public void removeElement(Element element) {
+        Case c = getCase(element);
+
+        System.out.printf("Remove element at %s \n", getPosition(c));
+
+        c.setElement(null);
+    }
+
+    private Case getCase(Element element) {
+        for (Case[] column : cases) {
+            for (Case row : column) {
+                if (row.getElement() == element) {
+                    return row;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    private void swap(Point first, Point second) {
+        Case tmp = cases[first.x][first.y];
+        cases[first.x][first.y] = cases[second.x][second.y];
+        cases[second.x][second.y] = tmp;
     }
 
     public void endTurn() {
         for(WorldObserver observer : worldObservers){
             observer.worldChanged();
         }
+    }
+
+    public boolean isFull() {
+        for (Case[] column : cases) {
+            for (Case row : column) {
+                if (row.getElement() == null) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }

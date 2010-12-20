@@ -26,11 +26,15 @@ public class Mobster implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-        return false;  //TODO Implement that !
+        if (!(c instanceof MafiaCase)) {
+            throw new IllegalArgumentException("Case not of good type");
+        }
+
+        return true;
     }
 
     @Override
-    public Command getCommand(Collection<Case> aNeighbors) {
+    public Command getCommand(World world, Collection<Case> aNeighbors) {
         return null;
     }
 }

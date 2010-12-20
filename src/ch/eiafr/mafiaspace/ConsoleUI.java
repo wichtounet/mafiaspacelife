@@ -10,13 +10,15 @@ public class ConsoleUI implements WorldObserver {
 
         this.worldManager = worldManager;
 
+        worldManager.getWorld().addObserver(this);
+
         System.out.println("The game started !");
 
         displayWorld(worldManager.getWorld());
 
         Scanner scanner = new Scanner(System.in);
 
-        while(true){
+        while(!worldManager.isWorldEnded()){
             String command = scanner.nextLine();
 
             if("next".equals(command)){
@@ -24,6 +26,8 @@ public class ConsoleUI implements WorldObserver {
                 worldManager.nextTurn();
             }
         }
+
+        System.out.println("The world is over - game terminated !");
     }
 
     @Override
