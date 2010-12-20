@@ -1,9 +1,8 @@
 package ch.eiafr.mafiaspace;
 
 public class PutInJail extends Command {
-    
-	public PutInJail(Element element, World world) {
-		super(element, world);
+	public PutInJail(Element element, Mobster mobster) {
+		super(element);
 	}
 	
 	@Override

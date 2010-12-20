@@ -2,8 +2,8 @@ package ch.eiafr.mafiaspace;
 
 public class Create extends Command {
     
-	public Create(Element element, World world) {
-		super(element, world);
+	public Create(Element element) {
+		super(element);
 	}
 	
 	@Override
