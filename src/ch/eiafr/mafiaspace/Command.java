@@ -1,13 +1,14 @@
 package ch.eiafr.mafiaspace;
 
 public abstract class Command {
-    private Element element;
-    private World world;
+    protected Element src;
+    protected World world;
     
-    public Command(Element element, World world) {
-    	this.element = element;
-    	this.world = world;
+    public Command(Element src) {
+    	this.src = src;
     }
+    
+    public void setWorld(World world) { this.world = world; }
     
     public abstract void make();
 }
