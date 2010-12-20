@@ -18,10 +18,14 @@ public abstract class WorldManager {
             }
         }
 
-        Command command = nextCase.getElement().getCommand(world.getNeighbours(nextCase));
+        Command command = nextCase.getElement().getCommand(world, world.getNeighbours(nextCase));
 
         if(command != null){
+            command.setWorld(world);
+
             command.make();
+
+            System.out.println("New action : " + command);
         }
         
         world.endTurn();

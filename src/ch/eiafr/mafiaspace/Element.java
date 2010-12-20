@@ -12,5 +12,5 @@ public interface Element {
 
     boolean isAbleToMove(Case c);
 
-    Command getCommand(Collection<Case> aNeighbors);
+    Command getCommand(World world, Collection<Case> aNeighbors);
 }

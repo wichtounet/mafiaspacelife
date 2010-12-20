@@ -151,6 +151,26 @@ public class World {
         swap(getPosition(start), getPosition(end));
     }
 
+    public void removeElement(Element element) {
+        Case c = getCase(element);
+
+        System.out.printf("Remove element at %s \n", getPosition(c));
+
+        c.setElement(null);
+    }
+
+    private Case getCase(Element element) {
+        for (Case[] column : cases) {
+            for (Case row : column) {
+                if (row.getElement() == element) {
+                    return row;
+                }
+            }
+        }
+
+        return null;
+    }
+
     private void swap(Point first, Point second) {
         Case tmp = cases[first.x][first.y];
         cases[first.x][first.y] = cases[second.x][second.y];

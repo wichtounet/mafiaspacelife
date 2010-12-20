@@ -28,7 +28,21 @@ public class Godfather implements Element {
     }
 
     @Override
-    public Command getCommand(Collection<Case> aNeighbors) {
+    public Command getCommand(World world, Collection<Case> neighbors) {
+        for(Case c : neighbors){
+            if(c.getElement() instanceof Cop){
+                return new KillCop(this, c.getElement());
+            }
+
+            if(c.getElement() instanceof Mobster){
+                Mobster mobster = (Mobster) c.getElement();
+
+                if(mobster.isTraitor()){
+                    return new KillTraitor(this, mobster);
+                }
+            }
+        }
+
         return null;
     }
 }

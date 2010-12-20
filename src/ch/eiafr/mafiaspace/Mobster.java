@@ -34,7 +34,7 @@ public class Mobster implements Element {
     }
 
     @Override
-    public Command getCommand(Collection<Case> aNeighbors) {
+    public Command getCommand(World world, Collection<Case> aNeighbors) {
         return null;
     }
 }
