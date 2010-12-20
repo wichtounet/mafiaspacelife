@@ -1,5 +1,6 @@
 package ch.eiafr.mafiaspace;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -25,13 +26,14 @@ public class StartFrame extends JFrame implements ActionListener {
     private JButton      btLaunch    = new JButton("Launch");
     
     public StartFrame() {
-        setSize(500, 320);
         setTitle("MafiaSpaceLife");
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
         buildUI();
         setVisible(true);
-        setResizable(false);
     }
     
     private void buildUI() {
@@ -56,11 +58,15 @@ public class StartFrame extends JFrame implements ActionListener {
         GridBagHelper.modifyGDC(gbc, 3, 1, 1, 1, 0, 2);
         add(lbChoose, gbc);
         
-        GridBagHelper.modifyGDC(gbc, 1, 1, 1, 1, 0, 3);
+        GridBagHelper.modifyGDC(gbc, 1, 1, 1, 2, 0, 3);
         add(lbWorlds, gbc);
         
         listWorlds.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         GridBagHelper.modifyGDC(gbc, 2, 1, 1, 1, 1, 3);
+        
+        if(listWorlds.getModel().getSize() > 0)
+            listWorlds.setSelectedIndex(0);
+        
         add(scrollList, gbc);
         
         GridBagHelper.modifyGDC(gbc, 1, 1, 1, 1, 0, 4);
