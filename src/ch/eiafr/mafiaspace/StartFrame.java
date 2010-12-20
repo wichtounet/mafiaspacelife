@@ -114,7 +114,7 @@ public class StartFrame extends JFrame implements ActionListener {
         }
         catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Unable to load the file '" + worldName +
-                                          "'. Please check the consistency of the file",
+                                          "'. Please check the consistency of the file: " + e.getClass().getName(),
                                           "Error in world file",
                                           JOptionPane.ERROR_MESSAGE);
         }

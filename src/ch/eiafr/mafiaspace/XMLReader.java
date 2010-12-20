@@ -1,27 +1,25 @@
 package ch.eiafr.mafiaspace;
 
-import java.io.File;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
 public class XMLReader implements Reader {
     
-    private Document document;
-    
     @Override
     public World readWorld(String filename) throws Exception {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder        builder = factory.newDocumentBuilder();
+        XMLParser xmlParser = new XMLParser();
         
-        document = builder.parse(new File(filename));
-        Element eltRoot = document.getDocumentElement();
+        SAXParserFactory      factory = SAXParserFactory.newInstance();
+        SAXParser             parser  = factory.newSAXParser();
+        org.xml.sax.XMLReader reader  = parser.getXMLReader();
         
-        eltRoot.getClass();
+        reader.setContentHandler(xmlParser);
         
-        return null;
+        reader.parse(new InputSource(filename));
+        
+        // Create the new world with his cases and his type
+        return new World(xmlParser.getCases(), xmlParser.getProperty(KEY_TYPE));
     }
 }

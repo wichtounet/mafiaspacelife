@@ -13,20 +13,13 @@ public class TextReader implements Reader {
     private static final char   COMMENT_DELIMITER  = '#';
     private static final String KEYVALUE_DELIMITER = "=";
     
-    private static final String KEY_TYPE   = "type";
-    private static final String KEY_WIDTH  = "width";
-    private static final String KEY_HEIGHT = "height";
-    
     private Map<String, String> properties;
     private BufferedReader reader;
 
     @Override
     public World readWorld(String filename) throws Exception {
         properties = new HashMap<String, String>();
-        
-        World world = null;
-        
-        reader = new BufferedReader(new FileReader(new File(filename)));
+        reader     = new BufferedReader(new FileReader(new File(filename)));
         
         // Parse the header to get the type of the file and properties like width/height
         parseHeader();
@@ -38,12 +31,10 @@ public class TextReader implements Reader {
         // Parse the file to create the matrix of cases 
         parseMatrix(cases);
         
-        // Create the world with his cases and his type
-        world = new World(cases, properties.get(KEY_TYPE));
-        
         reader.close();
         
-        return world;
+        // Create the new world with his cases and his type
+        return new World(cases, properties.get(KEY_TYPE));
     }
     
     private void parseHeader() throws IOException {

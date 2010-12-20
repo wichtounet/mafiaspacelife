@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Defines a world for mafialife -->
+<world type="mafialife" width="12" height="12">
+
+    <!-- elem types: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather, 4 = casino -->
+    <cases>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="1" />
+        </row>
+        <row>
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="3" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="2" />
+        </row>
+        <row>
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="4" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="1" />
+            <elt type="2" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="1" />
+        </row>
+        <row>
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+            <elt type="2" />
+            <elt type="2" />
+            <elt type="0" />
+            <elt type="1" />
+            <elt type="0" />
+            <elt type="0" />
+        </row>
+    </cases>
+</world>
