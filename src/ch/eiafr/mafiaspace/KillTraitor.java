@@ -2,8 +2,8 @@ package ch.eiafr.mafiaspace;
 
 public class KillTraitor extends Command {
     
-	public KillTraitor(Element element, World world) {
-		super(element, world);
+	public KillTraitor(Element element) {
+		super(element);
 	}
 	
 	@Override
