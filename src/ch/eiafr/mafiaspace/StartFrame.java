@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class StartFrame extends JFrame implements ActionListener {
     
-    private static String WORLDS_DIRECTORY = "levels";
+    private static String WORLDS_DIRECTORY = "worlds";
     
     private JLabel       lbTitle     = new JLabel("MafiaSpaceLife");
     private JLabel       lbWelcome   = new JLabel("Welcome to MafiaSpaceLife!"); 
@@ -111,6 +111,10 @@ public class StartFrame extends JFrame implements ActionListener {
     private String[] getWorldFiles() {
         File directory = new File(WORLDS_DIRECTORY);
         File[] files = directory.listFiles();
+        
+        if(files == null)
+            return new String[0];
+        
         String[] filenames = new String[files.length];
         
         for(int i = 0; i < filenames.length; i++)
