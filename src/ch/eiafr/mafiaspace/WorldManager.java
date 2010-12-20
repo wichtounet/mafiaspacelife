@@ -20,8 +20,10 @@ public abstract class WorldManager {
 
         Command command = nextCase.getElement().getCommand(world.getNeighbours(nextCase));
 
-        //Execute command
-
+        if(command != null){
+            command.make();
+        }
+        
         world.endTurn();
     }
 

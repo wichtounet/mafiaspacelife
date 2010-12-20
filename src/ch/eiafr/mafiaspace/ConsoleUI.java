@@ -10,6 +10,8 @@ public class ConsoleUI implements WorldObserver {
 
         this.worldManager = worldManager;
 
+        worldManager.getWorld().addObserver(this);
+
         System.out.println("The game started !");
 
         displayWorld(worldManager.getWorld());

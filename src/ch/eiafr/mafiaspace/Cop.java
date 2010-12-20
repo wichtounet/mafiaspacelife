@@ -20,7 +20,11 @@ public class Cop implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-        return false;  //TODO Implement that !
+        if(!(c instanceof MafiaCase)){
+            throw new IllegalArgumentException("Case not of good type");
+        }
+
+        return !((MafiaCase) c).isCasino();
     }
 
     @Override
