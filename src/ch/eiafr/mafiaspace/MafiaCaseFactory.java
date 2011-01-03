@@ -14,6 +14,8 @@ public class MafiaCaseFactory extends CaseFactory {
                 return new MafiaCase(new Mobster(), false);
             case 4:
                 return new MafiaCase(null, true);
+            case 5:
+                return new MafiaCase(new Mobster(), true);
         }
 
         return null;

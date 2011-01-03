@@ -31,7 +31,7 @@ public class Godfather implements Element {
     public Command getCommand(World world, Collection<Case> neighbors) {
         for(Case c : neighbors){
             if(c.getElement() instanceof Cop){
-                return new KillCop(this, c.getElement());
+                return new KillCop(this, (Cop) c.getElement());
             }
 
             if(c.getElement() instanceof Mobster){

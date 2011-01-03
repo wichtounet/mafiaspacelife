@@ -22,8 +22,9 @@ public class ConsoleUI implements WorldObserver {
             String command = scanner.nextLine();
 
             if("next".equals(command)){
-                System.out.println("Next turn -->");
                 worldManager.nextTurn();
+            } else {
+                System.out.println("Wrong command");
             }
         }
 

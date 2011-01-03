@@ -26,9 +26,9 @@ public abstract class WorldManager {
         if(command != null){
             command.setWorld(world);
 
-            command.make();
+            System.out.println(command);
 
-            System.out.println("New action : " + command);
+            command.make();
         }
 
         //Manage parking
@@ -42,6 +42,8 @@ public abstract class WorldManager {
 
             if(park.getTime() <= 0){
                 if(world.addElement(park.getElement())){
+                    System.out.println("Remove mobster from jail");
+
                     parking.remove();
                 }
             }

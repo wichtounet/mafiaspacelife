@@ -15,4 +15,9 @@ public class PutInJail extends Command {
     public void make() {
         world.park(mobster, new Random().nextInt(20) + 5, 0);
     }
+
+    @Override
+    public String toString() {
+        return src.getName() + " put " + mobster.getName() + " in jail";
+    }
 }

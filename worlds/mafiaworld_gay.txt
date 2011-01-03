@@ -1,0 +1,13 @@
+# defines a world for Mafia Life
+
+# type of file (mafialife | spacelife)
+type = mafialife
+
+# size of the world
+width  = 4
+height = 4
+
+5  5  0  0
+5  5  0  0
+0  0  0  0
+0  0  0  1

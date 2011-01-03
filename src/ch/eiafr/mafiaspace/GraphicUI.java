@@ -55,6 +55,4 @@ public class GraphicUI extends JFrame implements WorldObserver {
     public void worldEnded() {
         throw new UnsupportedOperationException();
     }
-    
-    
 }

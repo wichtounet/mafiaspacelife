@@ -34,7 +34,23 @@ public class Mobster implements Element {
     }
 
     @Override
-    public Command getCommand(World world, Collection<Case> aNeighbors) {
+    public Command getCommand(World world, Collection<Case> neighbors) {
+        if (((MafiaCase) world.getCase(this)).isCasino()) {
+            for (Case c : neighbors) {
+                if (c.getElement() instanceof Mobster ) {
+                    MafiaCase mafiaCase = (MafiaCase) c;
+
+                    if(mafiaCase.isCasino()){
+                        return new ReproduceMobster(this);
+                    }
+                }
+            }
+        }
+
         return null;
+    }
+
+    public void setTraitor(boolean traitor) {
+        this.traitor = traitor;
     }
 }

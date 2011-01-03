@@ -94,6 +94,20 @@ public class World {
     }
 
     public boolean addElement(Element e){
+        for (Case[] row : cases) {
+            for (Case cell : row) {
+                if (cell.getElement() == null) {
+                    cell.setElement(e);
+
+                    System.out.println("Add element %s" + e.getName());
+
+                    elementQueue.add(e);
+                    
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
@@ -168,8 +182,7 @@ public class World {
     }
 
     public void moveElement(Case start, Case end) {
-        System.out.printf("Move %s to %s\n", getPosition(start), getPosition(end));
-        System.out.printf("-> %s to %s\n", start, end);
+        System.out.printf("Move %s (%s) to %s (%s)\n", start, getPosition(start), end, getPosition(end));
 
         swap(getPosition(start), getPosition(end));
     }
@@ -177,12 +190,14 @@ public class World {
     public void removeElement(Element element) {
         Case c = getCase(element);
 
-        System.out.printf("Remove element at %s \n", getPosition(c));
+        System.out.printf("Remove element (%s) at %s \n", element.getName(), getPosition(c));
 
         c.setElement(null);
+
+        elementQueue.remove(element);
     }
 
-    private Case getCase(Element element) {
+    public Case getCase(Element element) {
         for (Case[] column : cases) {
             for (Case row : column) {
                 if (row.getElement() == element) {
