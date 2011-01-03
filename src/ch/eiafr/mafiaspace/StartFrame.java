@@ -1,5 +1,6 @@
 package ch.eiafr.mafiaspace;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,7 @@ import javax.swing.*;
 
 public class StartFrame extends JFrame implements ActionListener {
     
-    private static String WORLDS_DIRECTORY = "levels";
+    private static String WORLDS_DIRECTORY = "worlds";
     
     private JLabel       lbTitle     = new JLabel("MafiaSpaceLife");
     private JLabel       lbWelcome   = new JLabel("Welcome to MafiaSpaceLife!"); 
@@ -25,13 +26,14 @@ public class StartFrame extends JFrame implements ActionListener {
     private JButton      btLaunch    = new JButton("Launch");
     
     public StartFrame() {
-        setSize(500, 320);
         setTitle("MafiaSpaceLife");
-        setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500, 400);
+        setResizable(false);
+        setLocationRelativeTo(null);
+        
         buildUI();
         setVisible(true);
-        setResizable(false);
     }
     
     private void buildUI() {
@@ -56,11 +58,15 @@ public class StartFrame extends JFrame implements ActionListener {
         GridBagHelper.modifyGDC(gbc, 3, 1, 1, 1, 0, 2);
         add(lbChoose, gbc);
         
-        GridBagHelper.modifyGDC(gbc, 1, 1, 1, 1, 0, 3);
+        GridBagHelper.modifyGDC(gbc, 1, 1, 1, 2, 0, 3);
         add(lbWorlds, gbc);
         
         listWorlds.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         GridBagHelper.modifyGDC(gbc, 2, 1, 1, 1, 1, 3);
+        
+        if(listWorlds.getModel().getSize() > 0)
+            listWorlds.setSelectedIndex(0);
+        
         add(scrollList, gbc);
         
         GridBagHelper.modifyGDC(gbc, 1, 1, 1, 1, 0, 4);
@@ -83,36 +89,48 @@ public class StartFrame extends JFrame implements ActionListener {
         Object[] values = listWorlds.getSelectedValues();
         
         if(values.length == 0) {
-            JOptionPane.showMessageDialog(this, "Please select an available" +
-                    "" +
-                    " world", "No world selected", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select an available world",
+                                          "No world selected", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
+        String worldName = (String)values[0];
+        
         // Create the world and the world manager from the world file
-        final Reader       worldReader  = readerFactory.createReader(WORLDS_DIRECTORY + "/" + values[0]);
-        final World        world        = worldReader.readWorld(WORLDS_DIRECTORY + "/" + values[0]);
-        final WorldManager worldManager = managerFactory.createWorldManager(world.getType());
-        
-        worldManager.setWorld(world);
-        
-        // Launch the user interface
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                if(btConsole.isSelected())
-                    new ConsoleUI(worldManager);
-                else if(btGraphical.isSelected())
-                    new GraphicUI(worldManager);
-            }
-        });
-        
-        dispose();
+        try {
+            final Reader       worldReader  = readerFactory.createReader(WORLDS_DIRECTORY + "/" + worldName);
+            final World        world        = worldReader.readWorld(WORLDS_DIRECTORY + "/" + worldName);
+            final WorldManager worldManager = managerFactory.createWorldManager(world.getType());
+            
+            worldManager.setWorld(world);
+            
+            // Launch the user interface
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    if(btConsole.isSelected())
+                        new ConsoleUI(worldManager);
+                    else if(btGraphical.isSelected())
+                        new GraphicUI(worldManager);
+                }
+            });
+            
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Unable to load the file '" + worldName +
+                                          "'. Please check the consistency of the file: " + e.getClass().getName(),
+                                          "Error in world file",
+                                          JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     private String[] getWorldFiles() {
         File directory = new File(WORLDS_DIRECTORY);
         File[] files = directory.listFiles();
+        
+        if(files == null)
+            return new String[0];
+        
         String[] filenames = new String[files.length];
         
         for(int i = 0; i < filenames.length; i++)
