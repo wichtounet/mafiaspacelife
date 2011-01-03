@@ -12,7 +12,9 @@ public class World {
     private final String type;
     private final Collection<WorldObserver> worldObservers = new ArrayList<WorldObserver>(5);
 
-    private final LinkedList<Case> elementQueue = new LinkedList<Case>();
+    private final LinkedList<Element> elementQueue = new LinkedList<Element>();
+
+    private final Collection<Park> parking = new ArrayList<Park>(5);
 
     public World(Case[][] cases, String type) {
         super();
@@ -23,7 +25,7 @@ public class World {
         for(Case[] column : cases){
             for(Case row : column){
                 if(row.getElement() != null){
-                    elementQueue.add(row);
+                    elementQueue.add(row.getElement());
                 }
             }
         }
@@ -51,12 +53,16 @@ public class World {
         }
     }
 
-    public Case getNextElement() {
-        Case next = elementQueue.pop();
+    public Element getNextElement() {
+        Element next = elementQueue.pop();
 
         elementQueue.add(next);
 
         return next;
+    }
+
+    public Collection<Case> getPossibleMoves(Element element) {
+        return getPossibleMoves(getCase(element));
     }
 
     public Collection<Case> getPossibleMoves(Case c) {
@@ -73,6 +79,22 @@ public class World {
         onlyNotEmptyCase(neighbours);
 
         return neighbours;
+    }
+
+    public void park(Element e, int time, int flag){
+        System.out.printf("Park %s for %s turns\n", e, time);
+
+        parking.add(new Park(e, time, flag));
+
+        removeElement(e);
+    }
+
+    public Collection<Park> getParking() {
+        return parking;
+    }
+
+    public boolean addElement(Element e){
+        return false;
     }
 
     private Collection<Case> getAllNeighbours(Point position) {
@@ -147,6 +169,7 @@ public class World {
 
     public void moveElement(Case start, Case end) {
         System.out.printf("Move %s to %s\n", getPosition(start), getPosition(end));
+        System.out.printf("-> %s to %s\n", start, end);
 
         swap(getPosition(start), getPosition(end));
     }
@@ -193,5 +216,43 @@ public class World {
         }
 
         return true;
+    }
+
+    public void moveElement(Element element, Case c) {
+        moveElement(getCase(element), c);
+    }
+
+    public Collection<Case> getNeighbours(Element element) {
+        return getNeighbours(getCase(element));
+    }
+
+    public static class Park {
+        private final Element element;
+        private int time;
+        private final int flag;
+
+        private Park(Element element, int time, int flag) {
+            super();
+
+            this.element = element;
+            this.time = time;
+            this.flag = flag;
+        }
+
+        public Element getElement() {
+            return element;
+        }
+
+        public int getTime() {
+            return time;
+        }
+
+        public int getFlag() {
+            return flag;
+        }
+
+        public void setTime(int time) {
+            this.time = time;
+        }
     }
 }

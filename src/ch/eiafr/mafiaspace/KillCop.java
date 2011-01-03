@@ -16,6 +16,6 @@ public class KillCop extends Command {
 
     @Override
     public String toString() {
-        return src.toString() + " killed traitor";
+        return src.toString() + " killed cop";
     }
 }

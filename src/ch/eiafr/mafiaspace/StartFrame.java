@@ -83,7 +83,9 @@ public class StartFrame extends JFrame implements ActionListener {
         Object[] values = listWorlds.getSelectedValues();
         
         if(values.length == 0) {
-            JOptionPane.showMessageDialog(this, "Please select an available world", "No world selected", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Please select an available" +
+                    "" +
+                    " world", "No world selected", JOptionPane.WARNING_MESSAGE);
             return;
         }
         
