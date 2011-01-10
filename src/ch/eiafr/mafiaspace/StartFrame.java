@@ -1,6 +1,5 @@
 package ch.eiafr.mafiaspace;
 
-import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -105,15 +104,22 @@ public class StartFrame extends JFrame implements ActionListener {
             worldManager.setWorld(world);
             
             // Launch the user interface
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    if(btConsole.isSelected())
+            if(btConsole.isSelected()) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
                         new ConsoleUI(worldManager);
-                    else if(btGraphical.isSelected())
+                    }
+                }).start();
+            }
+            else {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
                         new GraphicUI(worldManager);
-                }
-            });
+                    }
+                });
+            }
             
             dispose();
         } catch (Exception e) {
