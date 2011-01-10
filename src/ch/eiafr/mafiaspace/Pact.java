@@ -1,13 +1,20 @@
 package ch.eiafr.mafiaspace;
 
 public class Pact extends Command {
-    @Override
+    private final Mobster mobster;
+
+    public Pact(Element element, Mobster mobster) {
+		super(element);
+        this.mobster = mobster;
+    }
+	
+	@Override
     public void make() {
-        //TODO Implement that !
+        mobster.setTraitor(true);
     }
 
     @Override
-    public void undo() {
-        //TODO Implement that !
+    public String toString() {
+        return src.getName() + " made a pact with " + mobster.getName();
     }
 }

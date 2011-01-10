@@ -22,4 +22,13 @@ public class Case {
     public void setElement(Element element) {
         this.element = element;
     }
+
+    @Override
+    public String toString() {
+        return element == null ? "Empty" : element.getName();
+    }
+
+    public boolean isEmpty(){
+        return element == null;
+    }
 }

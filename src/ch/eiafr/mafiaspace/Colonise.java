@@ -1,13 +1,20 @@
 package ch.eiafr.mafiaspace;
 
 public class Colonise extends Command {
-    @Override
-    public void make() {
-        //TODO Implement that !
+    private Element dst;
+
+    public Colonise(Element src, Element dst) {
+        super(src);
+        this.dst = dst;
     }
 
     @Override
-    public void undo() {
-        //TODO Implement that !
+    public void make() {
+        if(src instanceof Kryptonian) {
+
+        }
+        else if (src instanceof Martian) {
+
+        }
     }
 }

@@ -1,17 +1,15 @@
 package ch.eiafr.mafiaspace;
 
-import javax.swing.Icon;
+import java.util.Collection;
 
-import java.util.List;
+import javax.swing.Icon;
 
 public interface Element {
     String getName();
 
     Icon getIcon();
 
-    boolean isAbleToMove();
+    boolean isAbleToMove(Case c);
 
-    int getPriority();
-
-    Command getCommand(List<Element> aNeighbors);
+    Command getCommand(World world, Collection<Case> aNeighbors);
 }

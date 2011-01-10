@@ -3,7 +3,7 @@ package ch.eiafr.mafiaspace;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-import java.util.List;
+import java.util.Collection;
 
 public class Planet implements Element {
     private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/planet.png");
@@ -19,17 +19,12 @@ public class Planet implements Element {
     }
 
     @Override
-    public boolean isAbleToMove() {
-        return false;
+    public boolean isAbleToMove(Case c) {
+        return false;  //TODO Implement that !
     }
 
     @Override
-    public int getPriority() {
-        return 1;
-    }
-
-    @Override
-    public Command getCommand(List<Element> aNeighbors) {
+    public Command getCommand(World world, Collection<Case> aNeighbors) {
         return null;
     }
 }

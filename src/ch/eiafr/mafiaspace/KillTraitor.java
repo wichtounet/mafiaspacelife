@@ -1,13 +1,21 @@
 package ch.eiafr.mafiaspace;
 
 public class KillTraitor extends Command {
-    @Override
+    private final Mobster mobster;
+
+    public KillTraitor(Element element, Mobster mobster) {
+		super(element);
+
+        this.mobster = mobster;
+    }
+	
+	@Override
     public void make() {
-        //TODO Implement that !
+        world.removeElement(mobster);
     }
 
     @Override
-    public void undo() {
-        //TODO Implement that !
+    public String toString() {
+        return src.toString() + " killed traitor";
     }
 }

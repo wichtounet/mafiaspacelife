@@ -1,16 +1,13 @@
-# defines a world for Mafia Lifes
+# defines a world for Mafia Life
 
-# type of file (mafialife | spacelife)
+# type of file
 type = mafialife
 
 # size of the world
 width  = 12
 height = 12
 
-# types:        caseType,elementType
-# types:        caseType,elementType
-# caseTypes:    1 = normal case, 2 = casino case
-# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather
+# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather, 4 = casino
 
 0  0  0  0  0  0  0  2  0  0  1  0
 0  2  0  0  3  0  0  0  0  0  3  0

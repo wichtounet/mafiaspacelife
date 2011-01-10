@@ -1,13 +1,21 @@
 package ch.eiafr.mafiaspace;
 
 public class KillCop extends Command {
-    @Override
-    public void make() {
-        //TODO Implement that !
+    private final Cop c;
+
+    public KillCop(Element element, Cop c) {
+		super(element);
+
+        this.c = c;
     }
+	
+	@Override
+    public void make() {
+        world.removeElement(c);
+	}
 
     @Override
-    public void undo() {
-        //TODO Implement that !
+    public String toString() {
+        return src.getName() + " killed cop";
     }
 }

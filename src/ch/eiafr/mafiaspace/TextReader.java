@@ -13,43 +13,28 @@ public class TextReader implements Reader {
     private static final char   COMMENT_DELIMITER  = '#';
     private static final String KEYVALUE_DELIMITER = "=";
     
-    private static final String KEY_TYPE   = "type";
-    private static final String KEY_WIDTH  = "width";
-    private static final String KEY_HEIGHT = "height";
-    
     private Map<String, String> properties;
     private BufferedReader reader;
-    //private CaseFactory caseFactory;
 
     @Override
-    public World readWorld(String filename) {
+    public World readWorld(String filename) throws Exception {
         properties = new HashMap<String, String>();
+        reader     = new BufferedReader(new FileReader(new File(filename)));
         
-        World world = null;
+        // Parse the header to get the type of the file and properties like width/height
+        parseHeader();
         
-        try {
-            reader = new BufferedReader(new FileReader(new File(filename)));
-            
-            // Parse the header to get the type of the file and properties like width/height
-            parseHeader();
-            
-            int width  = Integer.parseInt(properties.get(KEY_WIDTH));
-            int height = Integer.parseInt(properties.get(KEY_HEIGHT));
-            Case[][] cases = new Case[height][width];
-            
-            // Parse the file to create the matrix of cases 
-            parseMatrix(cases);
-            
-            world = new World(cases);
-            
-            reader.close();
-        }
-        catch (IOException e) {
-            System.err.println("Error while parsing text file: " + e.getMessage());
-            e.printStackTrace();
-        }
+        int width  = Integer.parseInt(properties.get(KEY_WIDTH));
+        int height = Integer.parseInt(properties.get(KEY_HEIGHT));
+        Case[][] cases = new Case[height][width];
         
-        return world;
+        // Parse the file to create the matrix of cases 
+        parseMatrix(cases);
+        
+        reader.close();
+        
+        // Create the new world with his cases and his type
+        return new World(cases, properties.get(KEY_TYPE));
     }
     
     private void parseHeader() throws IOException {

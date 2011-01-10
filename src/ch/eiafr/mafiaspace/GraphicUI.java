@@ -36,7 +36,7 @@ public class GraphicUI extends JFrame implements WorldObserver {
         
         wm.world.addObserver(this);
         
-        add(new ViewPanel(worldManager.world),GridBagHelper.modifyGDC(gdc,1,4,10,10,0,0));
+        add(new ViewPanel(worldManager.getWorld()),GridBagHelper.modifyGDC(gdc,1,4,10,10,0,0));
         add(playB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,0));
         add(pauseB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,1));
         add(stopB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,2));
@@ -62,6 +62,4 @@ public class GraphicUI extends JFrame implements WorldObserver {
     public void worldEnded() {
         throw new UnsupportedOperationException();
     }
-    
-    
 }
