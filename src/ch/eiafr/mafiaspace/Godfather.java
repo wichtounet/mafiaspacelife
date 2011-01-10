@@ -24,14 +24,14 @@ public class Godfather implements Element {
             throw new IllegalArgumentException("Case not of good type");
         }
 
-        return !((MafiaCase) c).isCasino();
+        return c.isEmpty() && !((MafiaCase) c).isCasino();
     }
 
     @Override
     public Command getCommand(World world, Collection<Case> neighbors) {
         for(Case c : neighbors){
             if(c.getElement() instanceof Cop){
-                return new KillCop(this, c.getElement());
+                return new KillCop(this, (Cop) c.getElement());
             }
 
             if(c.getElement() instanceof Mobster){

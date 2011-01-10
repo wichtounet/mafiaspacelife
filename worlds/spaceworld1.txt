@@ -1,0 +1,26 @@
+# defines a world for Space Life
+
+# type of file (mafialife | spacelife)
+type = spacelife
+
+# size of the world
+width  = 12
+height = 12
+
+# types:        caseType,elementType
+# types:        caseType,elementType
+# caseTypes:    1 = normal case, 2 = casino case
+# elementTypes: 0 = nothing, 1 = asteroid, 2 = planet, 3 = blackhole, 4 = martian, 5 = kryptonian
+
+4  0  0  2  0  0  0  0  0  0  5  0
+0  0  3  0  0  0  0  3  4  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  4
+0  0  0  2  0  0  5  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  3  0  0
+5  0  0  0  0  4  0  0  0  0  0  2
+0  3  0  0  0  0  0  0  0  0  0  0
+0  0  2  0  5  0  1  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  0
+0  0  0  0  0  0  0  0  0  0  0  5
+4  0  0  3  0  0  0  0  0  0  0  0
+0  0  0  0  5  4  0  0  2  3  0  0

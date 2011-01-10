@@ -1,9 +1,9 @@
 package ch.eiafr.mafiaspace;
 
 public class KillCop extends Command {
-    private final Element c;
+    private final Cop c;
 
-    public KillCop(Element element, Element c) {
+    public KillCop(Element element, Cop c) {
 		super(element);
 
         this.c = c;
@@ -16,6 +16,6 @@ public class KillCop extends Command {
 
     @Override
     public String toString() {
-        return src.toString() + " killed traitor";
+        return src.getName() + " killed cop";
     }
 }

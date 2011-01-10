@@ -1,12 +1,23 @@
 package ch.eiafr.mafiaspace;
 
+import java.util.Random;
+
 public class PutInJail extends Command {
-	public PutInJail(Element element, Mobster mobster) {
+    private final Mobster mobster;
+
+    public PutInJail(Element element, Mobster mobster) {
 		super(element);
-	}
+
+        this.mobster = mobster;
+    }
 	
 	@Override
     public void make() {
-        //TODO Implement that !
+        world.park(mobster, new Random().nextInt(20) + 5, 0);
+    }
+
+    @Override
+    public String toString() {
+        return src.getName() + " put " + mobster.getName() + " in jail";
     }
 }

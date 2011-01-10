@@ -1,13 +1,21 @@
 package ch.eiafr.mafiaspace;
 
 public class KillGodFather extends Command {
+    private final Godfather c;
     
-	public KillGodFather(Element element) {
-		super(element);
+	public KillGodFather(Element element, Godfather c) {
+        super(element);
+
+        this.c = c;
 	}
-	
-	@Override
+
+    @Override
     public void make() {
-        //TODO Implement that !
+        world.removeElement(c);
+    }
+
+    @Override
+    public String toString() {
+        return src.getName() + " killed godfather";
     }
 }

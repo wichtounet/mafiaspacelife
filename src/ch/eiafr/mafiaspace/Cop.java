@@ -25,7 +25,7 @@ public class Cop implements Element {
             throw new IllegalArgumentException("Case not of good type");
         }
 
-        return !((MafiaCase) c).isCasino();
+        return c.isEmpty() && !((MafiaCase) c).isCasino();
     }
 
     @Override
@@ -39,9 +39,31 @@ public class Cop implements Element {
                 }
             }
 
-            //TODO Manage godfather
+            if(c.getElement() instanceof Godfather){
+                Godfather godfather = (Godfather) c.getElement();
+
+                int count = countMobster(world);
+
+                if(count == 0){
+                    return new KillGodFather(this, godfather);
+                }
+            }
         }
 
         return null;
+    }
+
+    private static int countMobster(World world) {
+        int count = 0;
+
+        for (Case[] column : world.getCases()) {
+            for (Case row : column) {
+                if (row.getElement() instanceof Mobster) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
     }
 }

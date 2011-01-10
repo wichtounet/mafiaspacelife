@@ -1,9 +1,8 @@
 package ch.eiafr.mafiaspace;
 
-import javax.swing.Icon;
-
 import java.util.Collection;
-import java.util.List;
+
+import javax.swing.Icon;
 
 public interface Element {
     String getName();

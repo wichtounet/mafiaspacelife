@@ -22,8 +22,14 @@ public class ConsoleUI implements WorldObserver {
             String command = scanner.nextLine();
 
             if("next".equals(command)){
-                System.out.println("Next turn -->");
                 worldManager.nextTurn();
+            }
+            else if("exit".equals(command)) {
+                //System.exit(0);
+                return;
+            }
+            else {
+                System.out.println("Wrong command");
             }
         }
 
@@ -46,14 +52,14 @@ public class ConsoleUI implements WorldObserver {
 
         formatBuilder.append(" | ");
 
-        for(int i = 0; i < world.getCases().length; i++){
+        for(int i = 0; i < world.getCases()[0].length; i++){
             formatBuilder.append("%10s | ");
         }
 
         formatBuilder.append('\n');
 
-        for(int i = 0; i < world.getCases()[0].length; i++){
-            System.out.printf(formatBuilder.toString(), world.getCases()[i]);
+        for(int i = 0; i < world.getCases().length; i++){
+            System.out.printf(formatBuilder.toString(), (Object[])world.getCases()[i]);
         }
     }
 }
