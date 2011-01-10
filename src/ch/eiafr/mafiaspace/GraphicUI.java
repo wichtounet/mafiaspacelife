@@ -10,24 +10,31 @@ import javax.swing.JFrame;
 
 public class GraphicUI extends JFrame implements WorldObserver {
 
-    private WorldManager worldManager;
+    private WorldManager wm;
     
     public GraphicUI(WorldManager worldManager)
     {
         super("Mafia - Spacelife");
+        wm = worldManager;
+        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.worldManager = worldManager;
         
         this.setSize(new Dimension(800,600));
         
         GridBagConstraints gdc = GridBagHelper.createGDC();
         setLayout(new GridBagLayout());
         
+        UIListener listener = new UIListener(worldManager);
+        
         JButton playB   = new JButton(">");
         JButton pauseB  = new JButton("||");
         JButton stopB   = new JButton("[]");
         JButton nStepB  = new JButton("|>");
         
+        nStepB.setActionCommand("nstep");
+        nStepB.addActionListener(listener);
+        
+        wm.world.addObserver(this);
         
         add(new ViewPanel(worldManager.world),GridBagHelper.modifyGDC(gdc,1,4,10,10,0,0));
         add(playB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,0));
@@ -48,7 +55,7 @@ public class GraphicUI extends JFrame implements WorldObserver {
     
     @Override
     public void worldChanged() {
-        throw new UnsupportedOperationException();
+        repaint();
     }
 
     @Override
