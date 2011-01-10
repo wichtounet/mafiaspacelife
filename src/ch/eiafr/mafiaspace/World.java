@@ -181,12 +181,6 @@ public class World {
         return null;
     }
 
-    public void moveElement(Case start, Case end) {
-        System.out.printf("Move %s (%s) to %s (%s)\n", start, getPosition(start), end, getPosition(end));
-
-        swap(getPosition(start), getPosition(end));
-    }
-
     public void removeElement(Element element) {
         Case c = getCase(element);
 
@@ -209,11 +203,6 @@ public class World {
         return null;
     }
 
-    private void swap(Point first, Point second) {
-        Case tmp = cases[first.x][first.y];
-        cases[first.x][first.y] = cases[second.x][second.y];
-        cases[second.x][second.y] = tmp;
-    }
 
     public void endTurn() {
         for(WorldObserver observer : worldObservers){
@@ -233,8 +222,17 @@ public class World {
         return true;
     }
 
-    public void moveElement(Element element, Case c) {
-        moveElement(getCase(element), c);
+    public void moveElement(Element element, Case end) {
+        Case start = getCase(element);
+
+        System.out.printf("Move %s (%s) to %s (%s)\n", start, getPosition(start), end, getPosition(end));
+
+        if(!end.isEmpty()){
+            removeElement(end.getElement());
+        }
+
+        end.setElement(start.getElement());
+        start.setElement(null);
     }
 
     public Collection<Case> getNeighbours(Element element) {
