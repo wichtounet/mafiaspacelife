@@ -8,6 +8,11 @@ import java.util.Collection;
 public class Asteroid implements Element {
     private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/asteroide.png");
 
+    private boolean isTimeToMove = true;
+    private boolean hasMovedOnBlackhole = false;
+    
+    private Case myCase = null;
+    
     @Override
     public String getName() {
         return "Asteroid";
@@ -20,11 +25,30 @@ public class Asteroid implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-        return false;  //TODO Implement that !
+    	if(isTimeToMove) {
+    		if(c.getElement() instanceof Blackhole)
+    			hasMovedOnBlackhole = true;
+    		else
+    			hasMovedOnBlackhole = false;
+    		
+    		myCase = c;
+    		return true;
+    	}
+    		
+        return false;
     }
 
     @Override
     public Command getCommand(World world, Collection<Case> aNeighbors) {
-        return null;
+    	if(!isTimeToMove) {
+    		isTimeToMove = true;
+    		return null;
+    	}
+    	
+    	isTimeToMove = false;
+    	if(!hasMovedOnBlackhole)
+    		return null;
+    	
+    	return new Create(new Blackhole(), myCase);
     }
 }
