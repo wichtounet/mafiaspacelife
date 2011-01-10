@@ -11,7 +11,7 @@ public abstract class WorldManager {
     public void nextTurn(){
         Element nextCase = world.getNextElement();
 
-        Collection<Case> neighbours = world.getPossibleMoves(nextCase);
+        Collection<Case> neighbours = world.getNeighbours(nextCase);
 
         for(Case c : neighbours){
             if(nextCase.isAbleToMove(c)){

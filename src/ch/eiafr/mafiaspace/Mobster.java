@@ -30,7 +30,7 @@ public class Mobster implements Element {
             throw new IllegalArgumentException("Case not of good type");
         }
 
-        return true;
+        return c.isEmpty();
     }
 
     @Override

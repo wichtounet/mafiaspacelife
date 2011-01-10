@@ -25,7 +25,7 @@ public class Cop implements Element {
             throw new IllegalArgumentException("Case not of good type");
         }
 
-        return !((MafiaCase) c).isCasino();
+        return c.isEmpty() && !((MafiaCase) c).isCasino();
     }
 
     @Override

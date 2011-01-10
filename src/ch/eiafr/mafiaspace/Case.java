@@ -27,4 +27,8 @@ public class Case {
     public String toString() {
         return element == null ? "Empty" : element.getName();
     }
+
+    public boolean isEmpty(){
+        return element == null;
+    }
 }
