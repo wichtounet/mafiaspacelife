@@ -14,7 +14,6 @@ public class SpaceWorldManager extends WorldManager {
                 if (c.getElement() != null) {
                     if (c.getElement() instanceof Blackhole) {
                         blackHole = true;
-                        break;
                     } else {
                         return false;
                     }

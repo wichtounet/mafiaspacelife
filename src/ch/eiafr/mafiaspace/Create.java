@@ -10,6 +10,12 @@ public class Create extends Command {
 	
 	@Override
     public void make() {
-        c.setElement(src);
+		if(src instanceof Martian || src instanceof Kryptonian) {
+			world.get
+			
+		}
+		else {
+			c.setElement(src);
+		}
     }
 }

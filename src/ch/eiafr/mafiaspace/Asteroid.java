@@ -25,6 +25,7 @@ public class Asteroid implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
+    	System.out.println("called asteroid isAbleToMove");
     	if(isTimeToMove) {
     		if(c.getElement() instanceof Blackhole)
     			hasMovedOnBlackhole = true;
@@ -34,8 +35,9 @@ public class Asteroid implements Element {
     		myCase = c;
     		return true;
     	}
-    		
-        return false;
+    	else {
+    		return false;
+    	}
     }
 
     @Override
