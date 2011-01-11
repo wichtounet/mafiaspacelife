@@ -8,10 +8,9 @@ import java.util.Collection;
 public class Planet implements Element {
     private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/planet.png");
 
-    private enum Elements {NOTHING, ASTEROID, PLANET, BLACKHOLE, MARTIAN, KRYPTONIAN};
-    private Elements movedOnElement = Elements.NOTHING;
-    private Case myCase;
-    private boolean isTimeToMove = true;
+    protected enum Elements {NOTHING, ASTEROID, PLANET, BLACKHOLE, MARTIAN, KRYPTONIAN};
+    protected Elements movedOnElement = Elements.NOTHING;
+    protected boolean isTimeToMove = true;
     
     @Override
     public String getName() {
@@ -26,33 +25,27 @@ public class Planet implements Element {
     @Override
     public boolean isAbleToMove(Case c) {
     	if(isTimeToMove) {
-    		if(c.getElement() == null) {
+    		if(c.isEmpty()) {
     			movedOnElement = Elements.NOTHING;
-    			myCase = c;
     			return true;
     		}
     		else if(c.getElement() instanceof Asteroid) {
 	    		movedOnElement = Elements.ASTEROID;
-	    		myCase = c;
 	    		return true;
 	    	}
 	    	else if(c.getElement() instanceof Blackhole) {
 	    		movedOnElement = Elements.BLACKHOLE;
-	    		myCase = c;
 	    		return true;
 	    	}
 	    	else if(c.getElement() instanceof Martian) {
 	    		movedOnElement = Elements.MARTIAN;
-	    		myCase = c;
 	    		return true;
 	    	}
 	    	else if(c.getElement() instanceof Kryptonian) {
 	    		movedOnElement = Elements.KRYPTONIAN;
-	    		myCase = c;
 	    		return true;
 	    	}
     	}
-    	
         return false;
     }
 
@@ -68,15 +61,13 @@ public class Planet implements Element {
     	
     	switch(movedOnElement) {
     	case ASTEROID:
-    		return new Create(new Asteroid(), myCase);
+    		return new Create(new Asteroid(), world.getCase(this));
     	case BLACKHOLE:
-    		return new Create(new Blackhole(), myCase);
+    		return new Create(new Blackhole(), world.getCase(this));
     	case MARTIAN:
-    		myCase.setElement(new PlanetMartian());
-    		return new Create(new Martian(), myCase);
+    		return new Colonise(this, new PlanetMartian());
     	case KRYPTONIAN:
-    		myCase.setElement(new PlanetKryptonian());
-    		return new Create(new Kryptonian(), myCase);
+    		return new Colonise(this, new PlanetKryptonian());
     	}
     	
         return null;

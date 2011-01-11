@@ -8,10 +8,9 @@ import java.util.Collection;
 public class Asteroid implements Element {
     private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/asteroide.png");
 
-    private boolean isTimeToMove = true;
-    private boolean hasMovedOnBlackhole = false;
-    
-    private Case myCase = null;
+    protected enum Elements {NOTHING, ASTEROID, PLANET, PLANETMARTIAN, PLANETKRYPTONIAN, BLACKHOLE, MARTIAN, KRYPTONIAN};
+    protected Elements movedOnElement = Elements.NOTHING;
+    protected boolean isTimeToMove = true;
     
     @Override
     public String getName() {
@@ -27,17 +26,40 @@ public class Asteroid implements Element {
     public boolean isAbleToMove(Case c) {
     	System.out.println("called asteroid isAbleToMove");
     	if(isTimeToMove) {
-    		if(c.getElement() instanceof Blackhole)
-    			hasMovedOnBlackhole = true;
-    		else
-    			hasMovedOnBlackhole = false;
-    		
-    		myCase = c;
-    		return true;
+    		if(c.isEmpty()) {
+    			movedOnElement = Elements.NOTHING;
+    			return true;
+    		}
+    		else if(c.getElement() instanceof Asteroid) {
+	    		movedOnElement = Elements.ASTEROID;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof Blackhole) {
+	    		movedOnElement = Elements.BLACKHOLE;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof Planet) {
+	    		movedOnElement = Elements.PLANET;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof PlanetMartian) {
+	    		movedOnElement = Elements.PLANETMARTIAN;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof PlanetKryptonian) {
+	    		movedOnElement = Elements.PLANETKRYPTONIAN;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof Martian) {
+	    		movedOnElement = Elements.MARTIAN;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof Kryptonian) {
+	    		movedOnElement = Elements.KRYPTONIAN;
+	    		return true;
+	    	}
     	}
-    	else {
-    		return false;
-    	}
+    	return false;
     }
 
     @Override
@@ -48,9 +70,13 @@ public class Asteroid implements Element {
     	}
     	
     	isTimeToMove = false;
-    	if(!hasMovedOnBlackhole)
-    		return null;
+    	switch(movedOnElement) {
+    	case ASTEROID:
+    		return new Destroy(this);
+    	case BLACKHOLE:
+    		return new Create(new Blackhole(), world.getCase(this));
+    	}
     	
-    	return new Create(new Blackhole(), myCase);
+    	return null;
     }
 }
