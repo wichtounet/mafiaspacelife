@@ -4,12 +4,13 @@
 type = spacelife
 
 # size of the world
-width  = 3
-height = 1
+width  = 4
+height = 2
 
 # types:        caseType,elementType
 # types:        caseType,elementType
 # caseTypes:    1 = normal case, 2 = casino case
 # elementTypes: 0 = nothing, 1 = asteroid, 2 = planet, 3 = blackhole, 4 = martian, 5 = kryptonian
 
-4  0  2
+5  2  0  4
+5  2  0  4

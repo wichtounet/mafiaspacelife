@@ -48,8 +48,10 @@ public class PlanetKryptonian extends Planet {
     	
     	switch(movedOnElement) {
     	case ASTEROID:
+    		world.removeElement(this);
     		return new Create(new Asteroid(), world.getCase(this));
     	case BLACKHOLE:
+    		world.removeElement(this);
     		return new Create(new Blackhole(), world.getCase(this));
     	}
     	

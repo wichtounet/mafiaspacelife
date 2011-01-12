@@ -8,6 +8,6 @@ public class Destroy extends Command {
 	
     @Override
     public void make() {
-        world.getCase(src).setElement(null);
+        world.removeElement(src);
     }
 }

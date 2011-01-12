@@ -52,7 +52,7 @@ public class Colonise extends Command {
 					world.addElement(new Martian(), martianCase);
 				Case planetMartianCase = world.getCase(src);
 				world.removeElement(src);
-				world.addElement(new PlanetMartian(), planetMartianCase);
+				world.addElement(dst, planetMartianCase);
 			}
 		}
 		else if(	(src instanceof Kryptonian || src instanceof Planet) &&	// Kryptonian colonises planet
@@ -65,7 +65,8 @@ public class Colonise extends Command {
 				if(kryptonianCase!=null)
 					world.addElement(new Kryptonian(), kryptonianCase);
 				Case planetKryptonianCase = world.getCase(src);
-				world.addElement(new PlanetKryptonian(), planetKryptonianCase);
+				world.removeElement(src);
+				world.addElement(dst, planetKryptonianCase);
 			}
 		}
     }
