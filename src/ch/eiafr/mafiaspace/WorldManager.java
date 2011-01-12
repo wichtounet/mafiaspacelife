@@ -12,11 +12,13 @@ public abstract class WorldManager {
         Element nextCase = world.getNextElement();
 
         Collection<Case> neighbours = world.getNeighbours(nextCase);
-
+        
+        System.out.println(neighbours.size());
+        
         for(Case c : neighbours){
+        	
             if(nextCase.isAbleToMove(c)){
                 world.moveElement(nextCase, c);
-
                 break;
             }
         }

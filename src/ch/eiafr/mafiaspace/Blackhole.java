@@ -20,7 +20,8 @@ public class Blackhole implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-        return false;  //TODO Implement that !
+    	System.out.println("called Blachole.isAbleToMove()");
+        return false;	// it doesn't move
     }
 
     @Override
