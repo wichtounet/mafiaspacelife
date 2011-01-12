@@ -114,10 +114,10 @@ public class World {
     private Collection<Case> getAllNeighbours(Point position) {
         Collection<Case> neighbours = new ArrayList<Case>(8);
 
-        if(position.x - 1 > 0){
+        if(position.x - 1 >= 0){
             neighbours.add(cases[position.x - 1][position.y]);
 
-            if (position.y - 1 > 0) {
+            if (position.y - 1 >= 0) {
                 neighbours.add(cases[position.x - 1][position.y - 1]);
             }
 
@@ -129,7 +129,7 @@ public class World {
         if (position.x + 1 < cases.length) {
             neighbours.add(cases[position.x + 1][position.y]);
 
-            if (position.y - 1 > 0) {
+            if (position.y - 1 >= 0) {
                 neighbours.add(cases[position.x + 1][position.y - 1]);
             }
 
@@ -138,7 +138,7 @@ public class World {
             }
         }
 
-        if (position.y - 1 > 0) {
+        if (position.y - 1 >= 0) {
             neighbours.add(cases[position.x][position.y - 1]);
         }
 
