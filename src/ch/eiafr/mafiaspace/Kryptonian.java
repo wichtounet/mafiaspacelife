@@ -35,6 +35,9 @@ public class Kryptonian implements Element {
         	movedOnElement = Elements.BLACKHOLE;
         	return true;
         }
+        else if(c.getElement() instanceof PlanetKryptonian) {
+        	return false;
+        }
         else if(c.getElement() instanceof Planet) {
         	movedOnElement = Elements.PLANET;
         	return true;

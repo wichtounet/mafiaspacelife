@@ -10,10 +10,12 @@ public abstract class WorldManager {
     
     public void nextTurn(){
         Element nextCase = world.getNextElement();
-
+        
+        System.out.println("nextCase: "+nextCase.getName());
+        
         Collection<Case> neighbours = world.getNeighbours(nextCase);
         
-        System.out.println(neighbours.size());
+        System.out.println("neighbours: "+neighbours.size());
         
         for(Case c : neighbours){
         	

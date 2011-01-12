@@ -76,8 +76,6 @@ public class World {
     public Collection<Case> getNeighbours(Case c){
         Collection<Case> neighbours = getAllNeighbours(getPosition(c));
 
-        onlyNotEmptyCase(neighbours);
-
         return neighbours;
     }
 
@@ -93,6 +91,14 @@ public class World {
         return parking;
     }
 
+    public boolean addElement(Element e, Case c){
+    	if(!c.isEmpty())
+    		return false;
+    	c.setElement(e);
+    	elementQueue.add(e);
+        return true;
+    }
+    
     public boolean addElement(Element e){
         for (Case[] row : cases) {
             for (Case cell : row) {

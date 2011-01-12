@@ -23,7 +23,6 @@ public class Martian implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-    	System.out.println("Called Martian.isAbleToMove()");
         if(c.isEmpty()) {
         	movedOnElement = Elements.NOTHING;
         	return true;
@@ -35,6 +34,9 @@ public class Martian implements Element {
         else if(c.getElement() instanceof Blackhole) {
         	movedOnElement = Elements.BLACKHOLE;
         	return true;
+        }
+        else if(c.getElement() instanceof PlanetMartian) {
+        	return false;
         }
         else if(c.getElement() instanceof Planet) {
         	movedOnElement = Elements.PLANET;

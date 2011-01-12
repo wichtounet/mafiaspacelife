@@ -12,4 +12,4 @@ height = 1
 # caseTypes:    1 = normal case, 2 = casino case
 # elementTypes: 0 = nothing, 1 = asteroid, 2 = planet, 3 = blackhole, 4 = martian, 5 = kryptonian
 
-3  0  1
+4  0  2
