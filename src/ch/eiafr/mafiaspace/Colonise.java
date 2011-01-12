@@ -15,13 +15,13 @@ public class Colonise extends Command {
     public void make() {
     	if(	src instanceof PlanetMartian &&	// PlanetMartian colonises empty case
     		dst instanceof PlanetMartian) {
-			if(engagedFightWithKryptonian(world.getCase(src))) {	//Planet got destroyed
+			if(engagedFightWithKryptonian(world.getCase(src))) {	// Planet got destroyed
 				world.getCase(src).setElement(null);
 			}
 		}
 		else if(src instanceof PlanetKryptonian	&&	// PlanetKryptonian colonises empty case
 				dst instanceof PlanetKryptonian) {
-			if(engagedFightWithMartian(world.getCase(src))) {
+			if(engagedFightWithMartian(world.getCase(src))) {	// Planet got destroyed
 				world.getCase(src).setElement(null);
 			}
 		}

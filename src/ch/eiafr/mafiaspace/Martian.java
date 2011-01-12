@@ -23,6 +23,7 @@ public class Martian implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
+    	System.out.println("Called Martian.isAbleToMove()");
         if(c.isEmpty()) {
         	movedOnElement = Elements.NOTHING;
         	return true;
