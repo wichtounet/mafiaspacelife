@@ -1,7 +1,9 @@
 package ch.eiafr.mafiaspace;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import ch.eiafr.mafiaspace.World.Park;
 
@@ -10,13 +12,16 @@ public abstract class WorldManager {
     
     public void nextTurn(){
         Element nextCase = world.getNextElement();
-
+        
+        System.out.println("nextCase: "+nextCase.getName());
+        
         Collection<Case> neighbours = world.getNeighbours(nextCase);
-
+        Collections.shuffle((List<Case>)neighbours);
+        
         for(Case c : neighbours){
+        	
             if(nextCase.isAbleToMove(c)){
                 world.moveElement(nextCase, c);
-
                 break;
             }
         }

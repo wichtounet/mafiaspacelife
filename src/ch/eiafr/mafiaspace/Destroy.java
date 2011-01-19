@@ -8,6 +8,6 @@ public class Destroy extends Command {
 	
     @Override
     public void make() {
-        //TODO Implement that !
+        world.removeElement(src);
     }
 }

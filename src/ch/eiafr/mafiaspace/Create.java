@@ -1,13 +1,19 @@
 package ch.eiafr.mafiaspace;
 
 public class Create extends Command {
-    
-	public Create(Element element) {
+    Case c;	
+	
+	public Create(Element element, Case c) {
 		super(element);
+		this.c = c;
 	}
 	
 	@Override
     public void make() {
-        //TODO Implement that !
+		if(!c.isEmpty())
+			world.removeElement(c.getElement());
+		world.addElement(src, c);
     }
 }
+
+
