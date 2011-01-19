@@ -9,10 +9,19 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+/**
+ * Main frame of the graphic user interface
+ * @author ButtyX
+ *
+ */
 public class GraphicUI extends JFrame implements WorldObserver {
 
     private WorldManager wm;
     private ViewPanel gamePanel;
+    
+    JButton playB;
+    JButton pauseB;
+    JButton nStepB;
     
     public GraphicUI(WorldManager worldManager)
     {
@@ -29,9 +38,9 @@ public class GraphicUI extends JFrame implements WorldObserver {
         
         UIListener listener = new UIListener(worldManager,this);
         
-        JButton playB   = new JButton(new ImageIcon(getClass().getResource("/res/play.png")));
-        JButton pauseB  = new JButton(new ImageIcon(getClass().getResource("/res/pause.png")));
-        JButton nStepB  = new JButton(new ImageIcon(getClass().getResource("/res/stepForward.png")));
+        playB   = new JButton(new ImageIcon(getClass().getResource("/res/play.png")));
+        pauseB  = new JButton(new ImageIcon(getClass().getResource("/res/pause.png")));
+        nStepB  = new JButton(new ImageIcon(getClass().getResource("/res/stepForward.png")));
         
         nStepB.setActionCommand("nstep");
         pauseB.setActionCommand("pause");
@@ -60,12 +69,33 @@ public class GraphicUI extends JFrame implements WorldObserver {
         
     }
     
+    /**
+     * Change the state of the buttons when the game is playing
+     * @param state
+     */
+    public void playing(boolean state)
+    {
+        if(state)
+        {
+            playB.setEnabled(false);
+            pauseB.setEnabled(true);
+            nStepB.setEnabled(false);
+        }
+        else{
+            playB.setEnabled(true);
+            pauseB.setEnabled(false);
+            nStepB.setEnabled(true);
+        }
+    }
+    
     @Override
     public void worldChanged() {
     }
 
     @Override
     public void worldEnded() {
-        throw new UnsupportedOperationException();
+        playB.setEnabled(false);
+        pauseB.setEnabled(false);
+        nStepB.setEnabled(false);
     }
 }

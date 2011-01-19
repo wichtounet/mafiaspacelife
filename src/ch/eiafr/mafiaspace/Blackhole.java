@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Blackhole implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/blackhole.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/blackhole.png"));
 
     @Override
     public String getName() {

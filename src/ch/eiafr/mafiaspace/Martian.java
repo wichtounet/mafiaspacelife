@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Martian implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/martian.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/martian.png"));
     
     protected enum Elements {NOTHING, ASTEROID, PLANET, BLACKHOLE, MARTIAN, KRYPTONIAN};
     protected Elements movedOnElement = Elements.NOTHING;

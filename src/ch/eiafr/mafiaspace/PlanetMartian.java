@@ -6,7 +6,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class PlanetMartian extends Planet {
-	private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/planetMartian.png");
+	private final Icon ICON = new ImageIcon(getClass().getResource("/res/pmartien.png"));
 	
     @Override
     public String getName() {
