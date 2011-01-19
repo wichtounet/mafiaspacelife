@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Godfather implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/godfather.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/godfather.png"));
 
     @Override
     public String getName() {

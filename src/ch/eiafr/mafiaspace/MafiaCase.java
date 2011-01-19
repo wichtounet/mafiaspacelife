@@ -1,6 +1,7 @@
 package ch.eiafr.mafiaspace;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 public class MafiaCase extends Case {
     private final boolean casino;
@@ -17,6 +18,13 @@ public class MafiaCase extends Case {
 
     @Override
     public Icon getIcon() {
-        throw new UnsupportedOperationException();
+
+        if(isCasino())
+        {
+            if(getElement()==null)return new ImageIcon(getClass().getResource("/res/casino.png"));
+            return new ImageIcon(getClass().getResource("/res/mobster_casino.png"));
+        }
+        if(getElement()==null)return null;
+        return getElement().getIcon();
     }
 }

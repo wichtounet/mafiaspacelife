@@ -5,17 +5,20 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 public class GraphicUI extends JFrame implements WorldObserver {
 
     private WorldManager wm;
+    private ViewPanel gamePanel;
     
     public GraphicUI(WorldManager worldManager)
     {
-        super("Mafia - Spacelife");
+        super(worldManager.getWorld().getType());
         wm = worldManager;
+
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
@@ -24,23 +27,27 @@ public class GraphicUI extends JFrame implements WorldObserver {
         GridBagConstraints gdc = GridBagHelper.createGDC();
         setLayout(new GridBagLayout());
         
-        UIListener listener = new UIListener(worldManager);
+        UIListener listener = new UIListener(worldManager,this);
         
-        JButton playB   = new JButton(">");
-        JButton pauseB  = new JButton("||");
-        JButton stopB   = new JButton("[]");
-        JButton nStepB  = new JButton("|>");
+        JButton playB   = new JButton(new ImageIcon(getClass().getResource("/res/play.png")));
+        JButton pauseB  = new JButton(new ImageIcon(getClass().getResource("/res/pause.png")));
+        JButton nStepB  = new JButton(new ImageIcon(getClass().getResource("/res/stepForward.png")));
         
         nStepB.setActionCommand("nstep");
+        pauseB.setActionCommand("pause");
+        playB.setActionCommand("play");
+        pauseB.addActionListener(listener);
         nStepB.addActionListener(listener);
+        playB.addActionListener(listener);
         
-        wm.world.addObserver(this);
+        wm.getWorld().addObserver(this);
         
-        add(new ViewPanel(worldManager.getWorld()),GridBagHelper.modifyGDC(gdc,1,4,10,10,0,0));
+        gamePanel = new ViewPanel(worldManager.getWorld());
+        
+        add(gamePanel,GridBagHelper.modifyGDC(gdc,1,4,100,10,0,0));
         add(playB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,0));
         add(pauseB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,1));
-        add(stopB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,2));
-        add(nStepB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,3));
+        add(nStepB,GridBagHelper.modifyGDC(gdc,1,1,1,1,1,2));
         
         
 
@@ -55,7 +62,6 @@ public class GraphicUI extends JFrame implements WorldObserver {
     
     @Override
     public void worldChanged() {
-        repaint();
     }
 
     @Override

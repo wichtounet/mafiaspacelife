@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Asteroid implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/asteroide.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/asteroid.png"));
 
     @Override
     public String getName() {

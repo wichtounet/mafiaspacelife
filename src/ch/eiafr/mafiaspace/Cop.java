@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Random;
 
 public class Cop implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/cop.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/cop.png"));
 
     @Override
     public String getName() {
