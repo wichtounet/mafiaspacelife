@@ -1,14 +1,10 @@
 package ch.eiafr.mafiaspace;
 
 import java.awt.Color;
-import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
-
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
@@ -69,15 +65,14 @@ public class ViewPanel extends JPanel implements WorldObserver{
     {
         Rectangle2D.Double square = new Rectangle2D.Double(x, y, caseWidth, caseHeight);
                 
-
-        if(world.getType()==CaseFactory.SPACE_TYPE)g2d.setPaint(Color.black);
-        if(world.getType()==CaseFactory.MAFIA_TYPE)g2d.setPaint(Color.white);
+        g2d.setColor(Color.white);
+        
+        if(world.getType().equals(CaseFactory.SPACE_TYPE))g2d.setColor(Color.black);
         
         g2d.fill(square);
         
         g2d.setColor(Color.BLACK);
         
-
         g2d.draw(square);
         
         // Get and print the case icon
