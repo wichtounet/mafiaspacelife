@@ -12,6 +12,12 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
+
+/** 
+ * World's view panel
+ * 
+ * @author Butty Xavier
+ */
 public class ViewPanel extends JPanel implements WorldObserver{
 
     /**
@@ -20,12 +26,13 @@ public class ViewPanel extends JPanel implements WorldObserver{
     private static final long serialVersionUID = 1545273982467122921L;
     
     private World       world;
-     
+    private boolean     ended; 
     
     public ViewPanel(World world)
     {
         this.world = world;
         this.world.addObserver(this);
+        ended = false;
     }
     
     public void paint(Graphics g)
@@ -37,21 +44,35 @@ public class ViewPanel extends JPanel implements WorldObserver{
         int caseWidth  = (int)(g.getClipBounds().getWidth()/cases[0].length);
         int caseHeight = (int)(g.getClipBounds().getHeight()/cases.length);
         
-        
-
-        
+        if(ended){
+            g2d.setFont(getFont().deriveFont(20));
+            g2d.setColor(Color.red);
+            g2d.drawString("Game Over !!!", 50, 50);
+        }
+        // Paint all the cases
         for(int y=0;y<cases.length;y++)
             for(int x=0;x<cases[0].length;x++)
-                paintCase(g2d, cases[y][x],x*caseWidth,y*caseHeight,caseWidth,caseHeight);
-     
+                paintCase(g2d, cases[y][x],x*caseWidth,y*caseHeight,caseWidth,caseHeight);     
     }
     
+    /** 
+     * Paint a case on the panel
+     * 
+     * @param g2d
+     * @param c
+     * @param x
+     * @param y
+     * @param caseWidth
+     * @param caseHeight
+     */
     private void paintCase(Graphics2D g2d, Case c, int x, int y, int caseWidth, int caseHeight)
     {
         Rectangle2D.Double square = new Rectangle2D.Double(x, y, caseWidth, caseHeight);
                 
-        //g2d.setPaint(new GradientPaint(x,y, Color.white, x+150, y+150, Color.blue));
-        g2d.setPaint(Color.white);
+
+        if(world.getType()==CaseFactory.SPACE_TYPE)g2d.setPaint(Color.black);
+        if(world.getType()==CaseFactory.MAFIA_TYPE)g2d.setPaint(Color.white);
+        
         g2d.fill(square);
         
         g2d.setColor(Color.BLACK);
@@ -94,8 +115,4 @@ public class ViewPanel extends JPanel implements WorldObserver{
         // TODO Auto-generated method stub
         
     }
-    
-    
-    
-
 }

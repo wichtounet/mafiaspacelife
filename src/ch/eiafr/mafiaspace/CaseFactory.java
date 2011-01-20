@@ -2,8 +2,8 @@ package ch.eiafr.mafiaspace;
 
 public abstract class CaseFactory {
     
-    private static final String MAFIA_TYPE = "mafialife";
-    private static final String SPACE_TYPE = "spacelife";
+    public static final String MAFIA_TYPE = "mafialife";
+    public static final String SPACE_TYPE = "spacelife";
     
     public abstract Case createElement(int type);
     

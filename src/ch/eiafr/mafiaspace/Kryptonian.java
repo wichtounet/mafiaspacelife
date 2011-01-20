@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Kryptonian implements Element {
-    private final Icon ICON = new ImageIcon(getClass().getResource("/res/kryptonian.png"));
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/kryptonien.png"));
     
     protected enum Elements {NOTHING, ASTEROID, PLANET, BLACKHOLE, MARTIAN, KRYPTONIAN};
     protected Elements movedOnElement = Elements.NOTHING;
