@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-import ch.eiafr.mafiaspace.World.Park;
-
 public abstract class WorldManager {
     private World world;
     
@@ -55,6 +53,10 @@ public abstract class WorldManager {
         }
         
         world.endTurn();
+
+        if(isWorldEnded()){
+            world.setEnded();
+        }
     }
 
     public void setWorld(World aWorld) {
