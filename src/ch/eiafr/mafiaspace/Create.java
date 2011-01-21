@@ -10,7 +10,9 @@ public class Create extends Command {
 	
 	@Override
     public void make() {
-		c.setElement(src);
+		if(!c.isEmpty())
+			world.removeElement(c.getElement());
+		world.addElement(src, c);
     }
 }
 

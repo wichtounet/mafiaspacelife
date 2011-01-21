@@ -15,59 +15,63 @@ public class Colonise extends Command {
     public void make() {
     	if(	src instanceof PlanetMartian &&	// PlanetMartian colonises empty case
     		dst instanceof PlanetMartian) {
-			if(engagedFightWithKryptonian(world.getCase(src))) {	// Planet got destroyed
-				world.getCase(src).setElement(null);
+			if(engagedFightWithKryptonian(world, world.getCase(src))) {	// Planet got destroyed
+				world.removeElement(src);
 			}
 		}
 		else if(src instanceof PlanetKryptonian	&&	// PlanetKryptonian colonises empty case
 				dst instanceof PlanetKryptonian) {
-			if(engagedFightWithMartian(world.getCase(src))) {	// Planet got destroyed
-				world.getCase(src).setElement(null);
+			if(engagedFightWithMartian(world, world.getCase(src))) {	// Planet got destroyed
+				world.removeElement(src);
 			}
 		}
     	
     	
 		else if(src instanceof Martian &&	// Martian colonises empty position
 				dst instanceof Martian) {
-			if(engagedFightWithKryptonian(world.getCase(src))) {	//Extraterrestrials die
-				world.getCase(src).setElement(null);
+			if(engagedFightWithKryptonian(world, world.getCase(src))) {	//Extraterrestrials die
+				world.removeElement(src);
 			}
 		}
 		else if(src instanceof Kryptonian &&	// Kryptonian colonises empty position
 				dst instanceof Kryptonian) {
-			if(engagedFightWithMartian(world.getCase(src))) {	//Extraterrestrials die
-				world.getCase(src).setElement(null);
+			if(engagedFightWithMartian(world, world.getCase(src))) {	//Extraterrestrials die
+				world.removeElement(src);
 			}
 		}
     	
     	
 		else if(	(src instanceof Martian || src instanceof Planet) &&	// Martian colonises planet
 					dst instanceof PlanetMartian) {
-			if(engagedFightWithKryptonian(world.getCase(src))) {
-				world.getCase(src).setElement(null);
+			if(engagedFightWithKryptonian(world, world.getCase(src))) {
+				world.removeElement(src);
 			}
 			else {
-				world.getCase(src).setElement(new PlanetMartian());
 				Case martianCase = getAroundSafeCaseForMartian(world.getCase(src));
 				if(martianCase!=null)
-					martianCase.setElement(src);		
+					world.addElement(new Martian(), martianCase);
+				Case planetMartianCase = world.getCase(src);
+				world.removeElement(src);
+				world.addElement(dst, planetMartianCase);
 			}
 		}
 		else if(	(src instanceof Kryptonian || src instanceof Planet) &&	// Kryptonian colonises planet
 					dst instanceof PlanetKryptonian) {
-			if(engagedFightWithMartian(world.getCase(src))) {
-				world.getCase(src).setElement(null);
+			if(engagedFightWithMartian(world, world.getCase(src))) {
+				world.removeElement(src);
 			}
 			else {
-				world.getCase(src).setElement(new PlanetKryptonian());
 				Case kryptonianCase = getAroundSafeCaseForKryptonian(world.getCase(src));
 				if(kryptonianCase!=null)
-					kryptonianCase.setElement(src);
+					world.addElement(new Kryptonian(), kryptonianCase);
+				Case planetKryptonianCase = world.getCase(src);
+				world.removeElement(src);
+				world.addElement(dst, planetKryptonianCase);
 			}
 		}
     }
     
-    private boolean engagedFightWithKryptonian(Case c) {
+    private boolean engagedFightWithKryptonian(World w, Case c) {
 		Collection<Case> aroundNotEmptyCases = world.getNeighbours(c);
 		Iterator<Case> itr = aroundNotEmptyCases.iterator();
 		boolean engagedFight = false;
@@ -76,14 +80,14 @@ public class Colonise extends Command {
 			Case crtCase = itr.next();
 			if(	crtCase.getElement() instanceof Kryptonian ||
 				crtCase.getElement() instanceof PlanetKryptonian) {
-				crtCase.setElement(null);
+				world.removeElement(crtCase.getElement());
 				engagedFight = true;
 			}
 		}
 		return engagedFight;
 	}
 	
-	private boolean engagedFightWithMartian(Case c) {
+	private boolean engagedFightWithMartian(World w, Case c) {
 		Collection<Case> aroundNotEmptyCases = world.getNeighbours(c);
 		Iterator<Case> itr = aroundNotEmptyCases.iterator();
 		boolean engagedFight = false;
@@ -92,7 +96,7 @@ public class Colonise extends Command {
 			Case crtCase = itr.next();
 			if(	crtCase.getElement() instanceof Martian ||
 				crtCase.getElement() instanceof PlanetMartian) {
-				crtCase.setElement(null);
+				world.removeElement(crtCase.getElement());
 				engagedFight = true;
 			}
 		}

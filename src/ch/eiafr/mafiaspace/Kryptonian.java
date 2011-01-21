@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Kryptonian implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/kryptonian.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/kryptonien.png"));
     
     protected enum Elements {NOTHING, ASTEROID, PLANET, BLACKHOLE, MARTIAN, KRYPTONIAN};
     protected Elements movedOnElement = Elements.NOTHING;
@@ -34,6 +34,9 @@ public class Kryptonian implements Element {
         else if(c.getElement() instanceof Blackhole) {
         	movedOnElement = Elements.BLACKHOLE;
         	return true;
+        }
+        else if(c.getElement() instanceof PlanetKryptonian) {
+        	return false;
         }
         else if(c.getElement() instanceof Planet) {
         	movedOnElement = Elements.PLANET;

@@ -1,17 +1,20 @@
 package ch.eiafr.mafiaspace;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 public abstract class WorldManager {
     private World world;
     
     public void nextTurn(){
         Element nextCase = world.getNextElement();
-
-        Collection<Case> neighbours = world.getNeighbours(nextCase);
         
-        System.out.println(neighbours.size());
+        System.out.println("nextCase: "+nextCase.getName());
+        
+        Collection<Case> neighbours = world.getNeighbours(nextCase);
+        Collections.shuffle((List<Case>)neighbours);
         
         for(Case c : neighbours){
         	

@@ -3,10 +3,10 @@ package ch.eiafr.mafiaspace;
 public class SpaceWorldManager extends WorldManager {
     @Override
     protected boolean isWorldEnded() {
-        return isOnlyBlackHole() || getWorld().isFull();
+        return	isOnlyBlackHoles();
     }
-
-    private boolean isOnlyBlackHole() {
+    
+    private boolean isOnlyBlackHoles() {
         boolean blackHole = false;
 
         for (Case[] cases : getWorld().getCases()) {
@@ -20,7 +20,7 @@ public class SpaceWorldManager extends WorldManager {
                 }
             }
         }
-
         return blackHole;
     }
 }
+

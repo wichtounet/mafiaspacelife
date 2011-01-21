@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Asteroid implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/asteroide.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/asteroid.png"));
 
     protected enum Elements {NOTHING, ASTEROID, PLANET, PLANETMARTIAN, PLANETKRYPTONIAN, BLACKHOLE, MARTIAN, KRYPTONIAN};
     protected Elements movedOnElement = Elements.NOTHING;
@@ -24,7 +24,6 @@ public class Asteroid implements Element {
 
     @Override
     public boolean isAbleToMove(Case c) {
-    	System.out.println("called asteroid isAbleToMove");
     	if(isTimeToMove) {
     		if(c.isEmpty()) {
     			movedOnElement = Elements.NOTHING;
@@ -38,16 +37,16 @@ public class Asteroid implements Element {
 	    		movedOnElement = Elements.BLACKHOLE;
 	    		return true;
 	    	}
-	    	else if(c.getElement() instanceof Planet) {
-	    		movedOnElement = Elements.PLANET;
-	    		return true;
-	    	}
 	    	else if(c.getElement() instanceof PlanetMartian) {
 	    		movedOnElement = Elements.PLANETMARTIAN;
 	    		return true;
 	    	}
 	    	else if(c.getElement() instanceof PlanetKryptonian) {
 	    		movedOnElement = Elements.PLANETKRYPTONIAN;
+	    		return true;
+	    	}
+	    	else if(c.getElement() instanceof Planet) {
+	    		movedOnElement = Elements.PLANET;
 	    		return true;
 	    	}
 	    	else if(c.getElement() instanceof Martian) {

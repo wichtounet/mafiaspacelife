@@ -6,7 +6,7 @@ import javax.swing.ImageIcon;
 import java.util.Collection;
 
 public class Mobster implements Element {
-    private static final Icon ICON = new ImageIcon("ch/eiafr/mafiaspace/icons/mobster.png");
+    private final Icon ICON = new ImageIcon(getClass().getResource("/res/mobster.png"));
 
     private boolean traitor;
 
