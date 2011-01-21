@@ -115,6 +115,6 @@ public class GraphicUI extends JFrame implements WorldObserver {
         pauseB.setEnabled(false);
         nStepB.setEnabled(false);
         listener.stop();
-        JOptionPane.showInputDialog(null, "Fin du jeu", "Game Over", 0);
+        JOptionPane.showMessageDialog(null, "Fin du jeu", "Game Over", 0);
     }
 }

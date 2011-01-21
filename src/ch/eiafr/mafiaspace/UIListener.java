@@ -45,6 +45,10 @@ public class UIListener implements ActionListener, ChangeListener{
                 public void run() {
                     while(running){
                         wm.nextTurn();
+                        if(wm.isWorldEnded()){
+                            ui.worldEnded();
+                            running = false;
+                        }
                         try {
                                 Thread.sleep((1000)/(speed+1));
                         } catch (InterruptedException e) {
