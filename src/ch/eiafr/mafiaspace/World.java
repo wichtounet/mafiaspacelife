@@ -47,7 +47,7 @@ public class World {
         worldObservers.remove(observer);
     }
 
-    public void setEnded(boolean aEnded) {
+    public void setEnded() {
         for(WorldObserver observer : worldObservers){
             observer.worldEnded();
         }
@@ -239,33 +239,4 @@ public class World {
         return getNeighbours(getCase(element));
     }
 
-    public static class Park {
-        private final Element element;
-        private int time;
-        private final int flag;
-
-        private Park(Element element, int time, int flag) {
-            super();
-
-            this.element = element;
-            this.time = time;
-            this.flag = flag;
-        }
-
-        public Element getElement() {
-            return element;
-        }
-
-        public int getTime() {
-            return time;
-        }
-
-        public int getFlag() {
-            return flag;
-        }
-
-        public void setTime(int time) {
-            this.time = time;
-        }
-    }
 }

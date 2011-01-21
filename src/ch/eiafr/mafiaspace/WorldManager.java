@@ -3,8 +3,6 @@ package ch.eiafr.mafiaspace;
 import java.util.Collection;
 import java.util.Iterator;
 
-import ch.eiafr.mafiaspace.World.Park;
-
 public abstract class WorldManager {
     private World world;
     
@@ -52,6 +50,10 @@ public abstract class WorldManager {
         }
         
         world.endTurn();
+
+        if(isWorldEnded()){
+            world.setEnded();
+        }
     }
 
     public void setWorld(World aWorld) {
