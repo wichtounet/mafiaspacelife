@@ -6,6 +6,10 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+/**
+ * Defines the world, aka a matrix of cases and other
+ * global informations about the world
+ */
 public class World {
     
     private final Case[][] cases;
@@ -165,7 +169,7 @@ public class World {
         }
     }
 
-    private static void onlyNotEmptyCase(Collection<Case> cases) {
+    /*private static void onlyNotEmptyCase(Collection<Case> cases) {
         Iterator<Case> iterator = cases.iterator();
 
         while (iterator.hasNext()) {
@@ -173,7 +177,7 @@ public class World {
                 iterator.remove();
             }
         }
-    }
+    }*/
 
     private Point getPosition(Case c) {
         for(int i = 0; i < cases.length; i++){

@@ -7,10 +7,8 @@ type = mafialife
 width  = 8
 height = 8
 
-# types:        caseType,elementType
-# types:        caseType,elementType
-# caseTypes:    1 = normal case, 2 = casino case
-# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather
+# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather,
+#               4 = casino empty, 5 = casino with mobster
 
 1  2  0  3  2  3  0  3
 0  0  0  0  2  0  0  3

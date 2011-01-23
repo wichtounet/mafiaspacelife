@@ -5,6 +5,11 @@ import javax.xml.parsers.SAXParserFactory;
 
 import org.xml.sax.InputSource;
 
+/**
+ * Reader to read a world saved in an XML file
+ * 
+ * @author Jérémy Singy
+ */
 public class XMLReader implements Reader {
     
     @Override
@@ -17,7 +22,7 @@ public class XMLReader implements Reader {
         
         reader.setContentHandler(xmlParser);
         
-        reader.parse(new InputSource(filename));
+        reader.parse(new InputSource(getClass().getResourceAsStream(filename)));
         
         // Create the new world with his cases and his type
         return new World(xmlParser.getCases(), xmlParser.getProperty(KEY_TYPE));

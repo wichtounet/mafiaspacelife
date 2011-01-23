@@ -1,13 +1,17 @@
 package ch.eiafr.mafiaspace;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * Reader to read a world saved in a text file
+ * 
+ * @author Jérémy Singy
+ */
 public class TextReader implements Reader {
     
     private static final char   COMMENT_DELIMITER  = '#';
@@ -19,7 +23,7 @@ public class TextReader implements Reader {
     @Override
     public World readWorld(String filename) throws Exception {
         properties = new HashMap<String, String>();
-        reader     = new BufferedReader(new FileReader(new File(filename)));
+        reader     = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(filename)));
         
         // Parse the header to get the type of the file and properties like width/height
         parseHeader();

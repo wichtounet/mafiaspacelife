@@ -1,5 +1,11 @@
 package ch.eiafr.mafiaspace;
 
+/**
+ * Factory to create readers for different type of file
+ * (XML or text file)
+ * 
+ * @author Jérémy Singy
+ */
 public class ReaderFactory {
     
     public static final String TEXT_FILE_EXT = ".txt";

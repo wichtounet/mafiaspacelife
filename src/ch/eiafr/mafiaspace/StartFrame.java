@@ -4,24 +4,37 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.*;
 
+/**
+ * Frame loaded at the start of the application to set
+ * the game and the wanted user interface
+ * 
+ * @author Jérémy Singy
+ */
 public class StartFrame extends JFrame implements ActionListener {
     
-    private static String WORLDS_DIRECTORY = "worlds";
+    private static String WORLDS_DIRECTORY = "/worlds";
+    private static final String[] WORLDS = {
+                                              "mafiaworld_actions.txt",
+                                              "mafiaworld_gay.txt",
+                                              "mafiaworld1.txt",
+                                              "mafiaworld2.xml",
+                                              "spaceworld1.txt",
+                                              "spaceworld_blackhole.txt"
+                                           };
     
     private JLabel       lbTitle     = new JLabel("MafiaSpaceLife");
     private JLabel       lbWelcome   = new JLabel("Welcome to MafiaSpaceLife!"); 
     private JLabel       lbChoose    = new JLabel("Choose a world and the way you want to launch it (graphical or console UI).");
-    private JList        listWorlds  = new JList(getWorldFiles());
+    private JList        listWorlds  = new JList(WORLDS);
     private JLabel       lbWorlds    = new JLabel("Worlds:");
     private JScrollPane  scrollList  = new JScrollPane(listWorlds);
     private JLabel       lbUI        = new JLabel("User interface:");
     private ButtonGroup  buttons     = new ButtonGroup();
-    private JRadioButton btConsole   = new JRadioButton("Console UI", true);
-    private JRadioButton btGraphical = new JRadioButton("Graphical UI");
+    private JRadioButton btConsole   = new JRadioButton("Console UI");
+    private JRadioButton btGraphical = new JRadioButton("Graphical UI", true);
     private JButton      btLaunch    = new JButton("Launch");
     
     public StartFrame() {
@@ -123,26 +136,11 @@ public class StartFrame extends JFrame implements ActionListener {
             
             dispose();
         } catch (Exception e) {
-            e.printStackTrace();
+
             JOptionPane.showMessageDialog(this, "Unable to load the file '" + worldName +
-                                          "'. Please check the consistency of the file: " + e.getMessage(),
+                                          "'. Please check the consistency of the file.",
                                           "Error in world file",
                                           JOptionPane.ERROR_MESSAGE);
         }
-    }
-    
-    private String[] getWorldFiles() {
-        File directory = new File(WORLDS_DIRECTORY);
-        File[] files = directory.listFiles();
-        
-        if(files == null)
-            return new String[0];
-        
-        String[] filenames = new String[files.length];
-        
-        for(int i = 0; i < filenames.length; i++)
-            filenames[i] = files[i].getName();
-        
-        return filenames;
     }
 }

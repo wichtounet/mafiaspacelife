@@ -15,8 +15,8 @@ import javax.swing.JSlider;
 
 /**
  * Main frame of the graphic user interface
+ * 
  * @author ButtyX
- *
  */
 public class GraphicUI extends JFrame implements WorldObserver {
 
@@ -34,7 +34,6 @@ public class GraphicUI extends JFrame implements WorldObserver {
     {
         super(worldManager.getWorld().getType());
         wm = worldManager;
-
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         

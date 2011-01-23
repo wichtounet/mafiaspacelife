@@ -108,6 +108,5 @@ public class ViewPanel extends JPanel implements WorldObserver{
     @Override
     public void worldEnded() {
         // TODO Auto-generated method stub
-        
     }
 }

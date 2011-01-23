@@ -6,6 +6,11 @@ import java.util.Map;
 import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * Parse a world defined in an XML file
+ * 
+ * @author Jérémy Singy
+ */
 public class XMLParser extends DefaultHandler {
 
     private Map<String, String> properties;

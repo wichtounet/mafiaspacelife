@@ -7,7 +7,8 @@ type = mafialife
 width  = 12
 height = 12
 
-# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather, 4 = casino
+# elementTypes: 0 = nothing, 1 = mobster, 2 = cop, 3 = godfather,
+#               4 = casino empty, 5 = casino with mobster
 
 0  0  0  0  0  0  0  2  0  0  1  0
 0  2  0  0  3  0  0  0  0  0  3  0
